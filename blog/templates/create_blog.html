@@ -1,0 +1,619 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Blog | CYVEXA</title>
+<link rel="icon" type="image/png" href="{% static 'images/CYVEXA.png' %}" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #050505;
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+    padding-top: 120px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================
+BACKGROUND EFFECTS
+========================= */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.06), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(255,255,255,0.04), transparent 30%);
+    z-index: -2;
+}
+
+.grid {
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -1;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.1));
+}
+
+/* =========================
+CONTAINER
+========================= */
+.container {
+    width: min(1200px, 90%);
+    margin: auto;
+}
+
+/* =========================
+HEADER
+========================= */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    backdrop-filter: blur(16px);
+    background: rgba(0,0,0,0.45);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: transform 0.4s ease;
+}
+
+header.navbar-hidden {
+    transform: translateY(-100%);
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo-wrapper img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.3));
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: -8px;
+    background: #fff;
+    transition: 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a:hover {
+    opacity: 0.8;
+}
+
+/* =========================
+HERO
+========================= */
+.blog-hero {
+    min-height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px 40px;
+}
+
+.blog-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff 0%, #bdbdbd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+}
+
+.blog-hero p {
+    color: #888;
+    font-size: 1.05rem;
+}
+
+/* =========================
+FORM SECTION
+========================= */
+.section {
+    padding: 40px 0 80px;
+    flex: 1;
+}
+
+/* Form Card */
+.form-card {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 45px;
+    border-radius: 24px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.5), rgba(255,255,255,0.1), transparent);
+}
+
+.form-card:hover {
+    border-color: rgba(255,255,255,0.18);
+    box-shadow:
+        0 30px 60px rgba(0,0,0,0.4),
+        0 0 0 1px rgba(255,255,255,0.1),
+        0 0 80px rgba(255,255,255,0.04);
+    transform: translateY(-5px);
+}
+
+/* Inputs */
+.form-card input[type="text"],
+.form-card textarea {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-card input[type="text"]::placeholder,
+.form-card textarea::placeholder {
+    color: #666;
+}
+
+.form-card input[type="text"]:focus,
+.form-card textarea:focus {
+    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.05);
+}
+
+.form-card textarea {
+    min-height: 180px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+/* File Input */
+.file-input-wrapper {
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.file-input-wrapper label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #c0c0c0;
+}
+
+.form-card input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 2px dashed rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.03);
+    color: #aaa;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-card input[type="file"]:hover {
+    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.06);
+}
+
+/* Button */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 36px;
+    border-radius: 60px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-primary {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 4px 20px rgba(255,255,255,0.1);
+    width: 100%;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(255,255,255,0.2);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+/* =========================
+FOOTER
+========================= */
+footer {
+    padding: 60px 0 40px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.footer-brand {
+    max-width: 320px;
+}
+
+.footer-brand img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 14px;
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.2));
+}
+
+.footer-brand h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.footer-brand p {
+    font-size: 0.95rem;
+    color: #888;
+    line-height: 1.6;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.footer-col strong {
+    color: #fff;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+}
+
+.footer-col a {
+    color: #a0a0a0;
+    text-decoration: none;
+    transition: 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.footer-col a:hover {
+    color: #fff;
+    transform: translateX(4px);
+}
+
+.footer-copy {
+    width: 100%;
+    text-align: left;
+    margin-top: 50px;
+    color: #666;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 30px;
+    font-size: 0.9rem;
+}
+
+/* =========================
+MENU BUTTON
+========================= */
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* =========================
+MOBILE NAV
+========================= */
+@media (max-width: 980px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        position: fixed;
+        top: 80px;
+        right: -280px;
+        width: 260px;
+        height: calc(100vh - 80px);
+        background: #111;
+        box-shadow: -10px 0 40px rgba(0,0,0,0.5);
+        transition: right 0.35s ease;
+        z-index: 998;
+    }
+
+    nav.active {
+        right: 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: 100%;
+        gap: 28px;
+        padding-top: 50px;
+    }
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+@media(max-width: 768px) {
+    body {
+        padding-top: 100px;
+    }
+
+    .blog-hero {
+        min-height: 20vh;
+        padding: 30px 15px 20px;
+    }
+
+    .section {
+        padding: 20px 0 50px;
+    }
+
+    .form-card {
+        padding: 28px 22px;
+        border-radius: 20px;
+    }
+
+    .form-card input[type="text"],
+    .form-card textarea {
+        padding: 12px 14px;
+        font-size: 16px; /* Prevents iOS zoom */
+    }
+
+    .btn {
+        width: 100%;
+        padding: 16px 24px;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 35px;
+    }
+
+    .footer-copy {
+        text-align: left;
+    }
+}
+
+/* =========================
+REVEAL ANIMATION
+========================= */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<div class="grid"></div>
+
+<header id="header">
+    <div class="container header-inner">
+        <div class="logo-wrapper">
+            <a href="/" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:#fff;">
+                <img src="{% static 'images/cyvexa_logo.png' %}" alt="logo">
+                <div class="logo-text">CYVEXA</div>
+            </a>
+        </div>
+
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+        <nav id="mobileMenu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/services/">Services</a></li>
+                <li><a href="/works/">Works</a></li>
+                <li><a href="/contact/">Contact</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="{% url 'event_list' %}">Events</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="blog-hero reveal">
+    <div class="container">
+        <h1>Create Blog</h1>
+        <p>Share your thoughts, insights, and stories with the CYVEXA community.</p>
+    </div>
+</section>
+
+<!-- BLOG FORM -->
+<section class="section">
+    <div class="container">
+        <form method="post" enctype="multipart/form-data" class="form-card reveal">
+            {% csrf_token %}
+
+            <input type="text" name="title" placeholder="Enter Blog Title" required autofocus>
+
+            <textarea name="content" placeholder="Write your content here..." required></textarea>
+
+            <div class="file-input-wrapper">
+                <label for="id_image">Cover Image (optional)</label>
+                <input type="file" name="image" id="id_image" accept="image/*">
+            </div>
+
+            <button type="submit" class="btn btn-primary">🚀 Post Blog</button>
+        </form>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container footer-inner">
+        <div class="footer-brand">
+            <img src="{% static 'images/cyvexa_logo.png' %}" alt="CYVEXA Logo">
+            <h3>CYVEXA</h3>
+            <p>Professional Cybersecurity & Web Development Solutions for modern enterprises.</p>
+        </div>
+
+        <div class="footer-col">
+            <strong>Company</strong>
+            <a href="/">Home</a>
+            <a href="/about/">About</a>
+            <a href="/services/">Services</a>
+            <a href="/works/">Works</a>
+            <a href="/contact/">Contact</a>
+        </div>
+
+        <div class="footer-col">
+            <strong>Resources</strong>
+            <a href="/blog/">Blog</a>
+            <a href="{% url 'event_list' %}">Events</a>
+        </div>
+
+        <div class="footer-col">
+            <strong>Services</strong>
+            <a href="#">Cybersecurity</a>
+            <a href="#">Web Development</a>
+            <a href="#">Consulting</a>
+            <a href="#">Ethical Hacking</a>
+        </div>
+
+        <div class="footer-copy">
+            © 2026 CYVEXA — Secure Technology Solutions. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById("mobileMenu").classList.toggle("active");
+}
+
+let lastScrollTop = 0;
+const header = document.getElementById('header');
+
+window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+        header.classList.add('navbar-hidden');
+    } else {
+        header.classList.remove('navbar-hidden');
+    }
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+});
+
+function revealOnScroll() {
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach((el) => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        const revealPoint = 100;
+        if (elementTop < windowHeight - revealPoint) {
+            el.classList.add('active');
+        }
+    });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+</script>
+
+</body>
+</html>

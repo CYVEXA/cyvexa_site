@@ -1,0 +1,1834 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CYVEXA | HOME</title>
+<link rel="icon" type="image/png" href="{% static 'images/CYVEXA.png' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Search Console ownership verification -->
+<meta name="google-site-verification" content="wV7ZCqJIu1mZjte3yJ7-PbyREoClOnEyqWwV9LP_n24" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JT3L0C97TQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JT3L0C97TQ');
+</script>
+
+<style>
+body{
+    font-family:'Space Grotesk',sans-serif;
+}
+
+.logo-text{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:1.4rem;
+    font-weight:700;
+    letter-spacing:3px;
+}
+
+.hero-text h1,
+.section-title,
+.showcase-text h2,
+.cta h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    letter-spacing:-1px;
+}
+
+
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+    scroll-padding-top: 120px;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#050505;
+    color:#ffffff;
+    overflow-x:hidden;
+    line-height:1.7;
+    margin:0;
+    padding-top:120px;
+}
+
+/* =========================
+BACKGROUND EFFECTS
+========================= */
+
+body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.06), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(255,255,255,0.04), transparent 30%);
+    z-index:-2;
+}
+
+.grid{
+    position:fixed;
+    inset:0;
+    background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:40px 40px;
+    z-index:-1;
+    mask-image:linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.1));
+}
+
+/* =========================
+CONTAINER
+========================= */
+
+.container{
+    width:min(1200px,90%);
+    margin:auto;
+}
+
+/* =========================
+HEADER — DESKTOP
+========================= */
+
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    z-index:999;
+    backdrop-filter:blur(16px);
+    background:rgba(0,0,0,0.45);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    transition:transform 0.4s ease, opacity 0.4s ease;
+}
+
+.header-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
+}
+
+.logo-wrapper{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+.logo-wrapper img{
+    width:88px;
+    height:88px;
+    object-fit:contain;
+    filter:drop-shadow(0 0 15px rgba(255,255,255,0.3));
+}
+
+.logo-text{
+    font-size:1.4rem;
+    font-weight:800;
+    letter-spacing:2px;
+    color:#fff;
+}
+
+/* NAV — DESKTOP */
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:32px;
+}
+
+nav a{
+    color:#fff;
+    font-weight:500;
+    font-size:0.95rem;
+    position:relative;
+    transition:0.3s ease;
+    opacity:0.9;
+    text-decoration:none;
+}
+
+nav a::after{
+    content:'';
+    position:absolute;
+    width:0%;
+    height:2px;
+    left:0;
+    bottom:-6px;
+    background:#fff;
+    transition:0.3s ease;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+nav a:hover{
+    opacity:1;
+}
+
+/* MENU ICON — hidden on desktop */
+.menu-toggle{
+    display:none;
+    font-size:26px;
+    color:#fff;
+    cursor:pointer;
+    z-index:1001;
+    user-select:none;
+}
+
+/* =========================
+HEADER — TABLET / MOBILE
+========================= */
+@media (max-width: 980px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        position: fixed;
+        top: 80px;
+        right: -300px;
+        width: 280px;
+        height: calc(100vh - 80px);
+        background: #0a0a0a;
+        border-left: 1px solid rgba(255,255,255,0.08);
+        box-shadow: -10px 0 40px rgba(0,0,0,0.6);
+        transition: right 0.35s ease;
+        z-index: 998;
+        padding: 40px 0;
+    }
+
+    nav.active {
+        right: 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 26px;
+    }
+
+    section {
+        padding: 70px 0;
+    }
+
+    .about-hero {
+        padding: 140px 0 80px;
+    }
+
+    .founder-block {
+        padding: 36px 30px;
+    }
+}
+
+
+/* =========================
+HEADER — SMALL MOBILE
+========================= */
+@media (max-width: 480px){
+
+    body{
+        padding-top:78px;
+    }
+
+    .header-inner{
+        padding:12px 0;
+    }
+
+
+
+
+
+    .logo-text{
+        font-size:1.1rem;
+        letter-spacing:1px;
+    }
+
+    .menu-toggle{
+        font-size:24px;
+    }
+
+    nav{
+        top:66px;
+        width:100%;
+        right:-100%;
+        height:calc(100vh - 66px);
+        border-left:none;
+    }
+
+    nav.active{
+        right:0;
+    }
+
+    nav a{
+        padding:14px 24px;
+        font-size:0.95rem;
+    }
+}
+
+/* =========================
+HERO SECTION
+========================= */
+
+.hero{
+    min-height:calc(100vh - 120px);
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero-content{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:80px;
+}
+
+.hero-text h1{
+    font-size:4.5rem;
+    font-weight:800;
+    line-height:1.1;
+    margin-bottom:25px;
+}
+
+.hero-text h1 span{
+    color:#bdbdbd;
+}
+
+.hero-text p{
+    font-size:1.1rem;
+    color:#cfcfcf;
+    margin-bottom:40px;
+    max-width:600px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:16px 34px;
+    border-radius:60px;
+    font-weight:600;
+    text-decoration:none;
+    transition:0.4s ease;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.btn-primary{
+    background:#fff;
+    color:#000;
+}
+
+.btn-primary:hover{
+    transform:translateY(-5px) scale(1.03);
+    box-shadow:0 15px 35px rgba(255,255,255,0.18);
+}
+
+.btn-outline{
+    border:1px solid rgba(255,255,255,0.2);
+    color:#fff;
+}
+
+.btn-outline:hover{
+    background:#fff;
+    color:#000;
+    transform:translateY(-5px);
+}
+
+.hero-image{
+    position:relative;
+}
+
+.hero-image img{
+    width:100%;
+    border-radius:30px;
+    object-fit:cover;
+    box-shadow:
+    0 25px 80px rgba(255,255,255,0.08),
+    0 0 0 1px rgba(255,255,255,0.08);
+    animation:float 6s ease-in-out infinite;
+}
+
+/* =========================
+ABOUT CARDS
+========================= */
+
+.section{
+    padding:120px 0;
+}
+
+.section-title{
+    font-size:3rem;
+    margin-bottom:20px;
+    text-align:center;
+    font-weight:800;
+}
+
+.section-sub{
+    text-align:center;
+    color:#cfcfcf;
+    max-width:800px;
+    margin:0 auto 70px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:28px;
+    padding:40px;
+    transition:0.4s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg, rgba(255,255,255,0.08), transparent);
+    opacity:0;
+    transition:0.4s ease;
+}
+
+.card:hover::before{
+    opacity:1;
+}
+
+.card:hover{
+    transform:translateY(-12px);
+    border-color:rgba(255,255,255,0.2);
+    box-shadow:0 25px 60px rgba(255,255,255,0.08);
+}
+
+.card h3{
+    margin-bottom:18px;
+    font-size:1.5rem;
+}
+
+.card p{
+    color:#d3d3d3;
+}
+
+/* =========================
+STATS
+========================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+}
+
+.stat-box{
+    text-align:center;
+    padding:50px 20px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    transition:0.4s ease;
+}
+
+.stat-box:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 50px rgba(255,255,255,0.08);
+}
+
+.stat-box h2{
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+/* =========================
+TRUSTED BY / LOGO MARQUEE
+========================= */
+
+.logos-section{
+    padding:80px 0 120px;
+}
+
+.logo-marquee{
+    position:relative;
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+    mask-image:linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+
+.logo-track{
+    display:flex;
+    align-items:center;
+    gap:36px;
+    width:max-content;
+    animation:scrollLogos 22s linear infinite;
+}
+
+.logo-marquee:hover .logo-track{
+    animation-play-state:paused;
+}
+
+.logo-item{
+    flex:0 0 auto;
+    width:200px;
+    height:120px;
+    background:#ffffff;
+    border-radius:22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:22px;
+    border:1px solid rgba(255,255,255,0.08);
+    box-shadow:0 15px 40px rgba(0,0,0,0.35);
+    transition:0.4s ease;
+}
+
+.logo-item img{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+}
+
+.logo-item:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 50px rgba(255,255,255,0.15);
+}
+
+@keyframes scrollLogos{
+    0%{
+        transform:translateX(0);
+    }
+    100%{
+        transform:translateX(-50%);
+    }
+}
+
+/* =========================
+SHOWCASE
+========================= */
+
+.showcase{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.showcase img{
+    width:100%;
+    border-radius:30px;
+    box-shadow:0 20px 60px rgba(255,255,255,0.08);
+    transition:0.5s ease;
+}
+
+.showcase img:hover{
+    transform:scale(1.03);
+}
+
+.showcase-text h2{
+    font-size:3rem;
+    margin-bottom:25px;
+}
+
+.showcase-text p{
+    color:#d0d0d0;
+    margin-bottom:25px;
+}
+
+/* =========================
+CTA
+========================= */
+
+.cta{
+    text-align:center;
+    padding:120px 20px;
+    position:relative;
+}
+
+.cta-box{
+    max-width:900px;
+    margin:auto;
+    padding:70px;
+    border-radius:35px;
+    background:linear-gradient(
+        135deg,
+        rgba(255,255,255,0.08),
+        rgba(255,255,255,0.03)
+    );
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(14px);
+}
+
+.cta h2{
+    font-size:3rem;
+    margin-bottom:25px;
+}
+
+.cta p{
+    color:#d0d0d0;
+    margin-bottom:40px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+    padding: 70px 0 40px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.footer-brand {
+    max-width: 320px;
+}
+
+.footer-brand img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 14px;
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.2));
+}
+
+.footer-brand h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.footer-brand p {
+    font-size: 0.95rem;
+    color: #888;
+    line-height: 1.6;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.footer-col strong {
+    color: #fff;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+}
+
+.footer-col a {
+    color: #a0a0a0;
+    text-decoration: none;
+    transition: 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.footer-col a:hover {
+    color: #fff;
+    transform: translateX(4px);
+}
+
+.footer-copy {
+    width: 100%;
+    text-align: center;
+    margin-top: 60px;
+    color: #666;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 30px;
+    font-size: 0.9rem;
+}
+
+
+/* =========================
+ANIMATIONS
+========================= */
+
+@keyframes float{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-20px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+.reveal{
+    opacity:0;
+    transform:translateY(50px);
+    transition:1s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================
+RESPONSIVE (TABLET / GENERAL)
+========================= */
+
+@media(max-width:980px){
+
+    .hero-content,
+    .showcase{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        min-height:auto;
+        padding:60px 0;
+    }
+
+    .hero-content{
+        gap:40px;
+    }
+
+    .hero-text{
+        text-align:center;
+    }
+
+    .hero-text p{
+        margin:0 auto 40px;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .hero-text h1{
+        font-size:1rem;
+    }
+
+    .hero-image img{
+        max-height:380px;
+        width:100%;
+        object-fit:cover;
+    }
+
+    .showcase-text{
+        text-align:center;
+    }
+
+    .cta-box{
+        padding:50px 30px;
+    }
+
+    .section-title{
+        font-size:2.4rem;
+    }
+
+    .cta h2{
+        font-size:2.4rem;
+    }
+
+    .logo-item{
+        width:150px;
+        height:95px;
+        padding:16px;
+    }
+}
+
+/* =========================
+RESPONSIVE — SMALL MOBILE
+========================= */
+@media(max-width:480px){
+
+    .hero-text h1{
+        font-size:2.2rem;
+    }
+
+    .hero-text p{
+        font-size:1rem;
+    }
+
+    .btn{
+        padding:14px 28px;
+        font-size:0.9rem;
+    }
+
+    .section{
+        padding:80px 0;
+    }
+
+    .section-title{
+        font-size:2rem;
+    }
+
+    .stat-box h2{
+        font-size:2.2rem;
+    }
+}
+
+/* =========================
+RESPONSIVE — FOOTER MOBILE
+========================= */
+@media(max-width:768px){
+    .footer-inner{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:30px;
+    }
+
+    .footer-brand{
+        grid-column:1 / -1;
+        max-width:100%;
+    }
+
+    .footer-copy{
+        grid-column:1 / -1;
+        margin-top:30px;
+    }
+}
+
+.stat-box h2{
+    font-size:1.5rem;
+    font-weight:700;
+    line-height:1.3;
+    margin-bottom:15px;
+    letter-spacing:-0.3px;
+}
+
+@media(max-width:480px){
+    .stat-box h2{
+        font-size:1.3rem;
+        line-height:1.3;
+    }
+}
+
+/* =========================
+   HERO BADGE
+========================= */
+.hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:rgba(37,99,235,0.14);
+    border:1px solid rgba(96,165,250,0.32);
+    color:#93c5fd;
+    font-size:0.82rem;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:6px 16px;
+    border-radius:999px;
+    margin-bottom:22px;
+    width:fit-content;
+}
+
+.hero-badge-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#60a5fa;
+    box-shadow:0 0 10px #60a5fa;
+    animation:pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot{
+    0%,100%{opacity:1;transform:scale(1);}
+    50%{opacity:0.4;transform:scale(0.85);}
+}
+
+/* =========================
+   PILLARS / WHAT WE DO
+========================= */
+.pillar-card{
+    background:rgba(255,255,255,0.035);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:24px;
+    padding:38px 32px;
+    transition:0.4s cubic-bezier(0.16,1,0.3,1);
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.pillar-card:hover{
+    transform:translateY(-10px);
+    border-color:rgba(255,255,255,0.22);
+    box-shadow:0 24px 60px rgba(0,0,0,0.5), 0 0 25px rgba(255,255,255,0.04);
+}
+
+.pillar-card h3{
+    font-size:1.45rem;
+    margin-bottom:14px;
+    font-weight:700;
+    color:#fff;
+}
+
+.pillar-card p{
+    color:#c4c4c4;
+    font-size:0.98rem;
+    line-height:1.65;
+}
+
+.pillar-tags{
+    margin-top:22px;
+    padding-top:16px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    font-size:0.82rem;
+    font-weight:700;
+    color:#38bdf8;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+}
+
+.pillar-link{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:20px;
+    color:#fff;
+    font-weight:600;
+    font-size:0.92rem;
+    text-decoration:none;
+    transition:0.3s ease;
+}
+
+.pillar-link:hover{
+    color:#60a5fa;
+    transform:translateX(5px);
+}
+
+/* =========================
+   PRODUCTS SECTION
+========================= */
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    gap:32px;
+}
+
+.product-card{
+    background:linear-gradient(135deg,rgba(255,255,255,0.05) 0%,rgba(255,255,255,0.02) 100%);
+    border:1px solid rgba(255,255,255,0.09);
+    border-radius:26px;
+    padding:42px 34px;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    transition:0.4s ease;
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(129,140,248,0.35);
+    box-shadow:0 25px 60px rgba(0,0,0,0.55), 0 0 35px rgba(99,102,241,0.12);
+}
+
+.product-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:14px;
+    margin-bottom:12px;
+}
+
+.product-header h3{
+    font-size:1.8rem;
+    font-weight:800;
+    color:#fff;
+    letter-spacing:-0.5px;
+}
+
+.product-badge{
+    display:inline-block;
+    font-size:0.75rem;
+    font-weight:700;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:5px 12px;
+    border-radius:999px;
+    background:rgba(234,179,8,0.15);
+    color:#fde047;
+    border:1px solid rgba(234,179,8,0.35);
+}
+
+.product-tagline{
+    font-size:1.02rem;
+    font-weight:600;
+    color:#a5b4fc;
+    margin-bottom:16px;
+}
+
+.product-desc{
+    color:#c7c7c7;
+    font-size:0.96rem;
+    line-height:1.7;
+    margin-bottom:24px;
+}
+
+.product-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:28px;
+}
+
+.product-tag{
+    font-size:0.78rem;
+    padding:5px 12px;
+    border-radius:8px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    color:#d1d5db;
+    font-weight:500;
+}
+
+.product-cta{
+    align-self:flex-start;
+}
+
+/* =========================
+   WHY CYVEXA GRID
+========================= */
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:28px;
+}
+
+.why-card{
+    background:rgba(255,255,255,0.035);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:24px;
+    padding:38px 28px;
+    transition:0.4s ease;
+}
+
+.why-card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(255,255,255,0.2);
+    box-shadow:0 20px 45px rgba(0,0,0,0.45);
+}
+
+.why-icon{
+    font-size:1.8rem;
+    margin-bottom:18px;
+    display:inline-block;
+}
+
+.why-card h3{
+    font-size:1.35rem;
+    font-weight:700;
+    margin-bottom:14px;
+    color:#fff;
+}
+
+.why-card p{
+    color:#c0c0c0;
+    font-size:0.95rem;
+    line-height:1.65;
+}
+
+/* =========================
+   INDUSTRIES GRID
+========================= */
+.industries-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:26px;
+    margin-bottom:45px;
+}
+
+.industry-card{
+    background:linear-gradient(145deg,rgba(255,255,255,0.04),rgba(255,255,255,0.015));
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:22px;
+    padding:34px 28px;
+    transition:0.4s ease;
+}
+
+.industry-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(56,189,248,0.3);
+    box-shadow:0 18px 40px rgba(0,0,0,0.4);
+}
+
+.industry-card h3{
+    font-size:1.3rem;
+    font-weight:700;
+    margin-bottom:12px;
+    color:#fff;
+}
+
+.industry-card p{
+    color:#b8b8b8;
+    font-size:0.95rem;
+    line-height:1.6;
+}
+
+.industry-cta-wrap{
+    text-align:center;
+}
+
+/* =========================
+   TESTIMONIALS SECTION
+========================= */
+.testimonials-section{
+    padding:110px 0;
+    position:relative;
+}
+
+.testimonials-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:32px;
+    margin-bottom:36px;
+}
+
+.testimonial-card{
+    background:linear-gradient(135deg,rgba(255,255,255,0.045) 0%,rgba(255,255,255,0.02) 100%);
+    border:1px solid rgba(255,255,255,0.09);
+    border-radius:26px;
+    padding:40px 32px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    transition:0.4s ease;
+}
+
+.testimonial-card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(255,255,255,0.22);
+    box-shadow:0 24px 55px rgba(0,0,0,0.5);
+}
+
+.testimonial-stars{
+    color:#fbbf24;
+    font-size:1.15rem;
+    letter-spacing:3px;
+    margin-bottom:16px;
+}
+
+.testimonial-quote{
+    color:#e5e7eb;
+    font-size:0.98rem;
+    line-height:1.75;
+    margin-bottom:26px;
+    font-style:italic;
+}
+
+.testimonial-author-box{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    padding-top:18px;
+}
+
+.testimonial-avatar{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#3b82f6,#8b5cf6);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-size:1.1rem;
+    flex-shrink:0;
+}
+
+.testimonial-author-name{
+    font-weight:700;
+    font-size:1.02rem;
+    color:#fff;
+}
+
+.testimonial-author-title{
+    font-size:0.85rem;
+    color:#9ca3af;
+}
+
+.students-subhead{
+    font-size:1.25rem;
+    font-weight:700;
+    margin:50px 0 24px;
+    text-align:center;
+    color:#e0e7ff;
+}
+
+.students-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:22px;
+}
+
+.student-card{
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:20px;
+    padding:26px 22px;
+    transition:0.3s ease;
+}
+
+.student-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(255,255,255,0.18);
+}
+
+.student-quote{
+    color:#d1d5db;
+    font-size:0.93rem;
+    line-height:1.6;
+    margin-bottom:16px;
+    font-style:italic;
+}
+
+.student-meta{
+    border-top:1px solid rgba(255,255,255,0.06);
+    padding-top:12px;
+    font-size:0.83rem;
+    color:#9ca3af;
+}
+
+.student-name{
+    font-weight:700;
+    color:#fff;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="grid"></div>
+
+<header id="header">
+    <div class="container header-inner">
+
+        <div class="logo-wrapper">
+            <img src="{% static 'images/cyvexa_logo.png' %}" alt="CYVEXA Logo">
+            <div class="logo-text">CYVEXA</div>
+        </div>
+
+        <nav id="navMenu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/services/">Services</a></li>
+                <li><a href="/works/">Works</a></li>
+                <li><a href="/contact/">Contact</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="{% url 'event_list' %}">Events</a></li>
+            </ul>
+        </nav>
+
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    </div>
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="container hero-content">
+
+<div class="hero-text reveal">
+    <div class="hero-badge">
+        <span class="hero-badge-dot"></span> Recommended positioning
+    </div>
+
+    <h1>
+        Secure Digital Solutions
+        <span>for Growing Businesses</span>
+    </h1>
+
+    <p>
+        CYVEXA helps businesses build secure websites, assess application security risks, and maintain reliable 
+        digital systems through cybersecurity services and purpose-built software.
+    </p>
+
+    <div class="hero-buttons">
+        <a href="/services/" class="btn btn-primary">Explore Services</a>
+        <a href="https://wa.me/918903051053?text=Hi%20CYVEXA,%20I%20would%20like%20to%20discuss%20our%20requirements" class="btn btn-outline">Talk to CYVEXA</a>
+    </div>
+</div>
+
+<div class="hero-image reveal">
+    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop" alt="Cybersecurity">
+</div>
+
+</div>
+
+</section>
+
+<!-- WHAT WE DO -->
+
+<section class="section">
+
+<div class="container">
+
+<h2 class="section-title reveal">
+    What We Do
+</h2>
+
+<p class="section-sub reveal">
+    Three focused pillars:
+</p>
+
+<div class="cards">
+
+<div class="pillar-card reveal">
+    <div>
+        <h3>Cybersecurity Testing</h3>
+        <p>
+            Web VAPT and security assessments that help identify vulnerabilities, understand risk, and prioritize remediation.
+        </p>
+    </div>
+    <div>
+        <div class="pillar-tags">Web VAPT · Security Assessment · Risk Reporting</div>
+        <a href="/services/#vapt" class="pillar-link">Explore Web VAPT →</a>
+    </div>
+</div>
+
+<div class="pillar-card reveal">
+    <div>
+        <h3>Secure Website Development</h3>
+        <p>
+            Business websites designed and developed with security, performance, maintainability, and scalability in mind.
+        </p>
+    </div>
+    <div>
+        <div class="pillar-tags">Website Development · Secure Architecture · Deployment</div>
+        <a href="/services/#web-dev" class="pillar-link">Explore Website Development →</a>
+    </div>
+</div>
+
+<div class="pillar-card reveal">
+    <div>
+        <h3>Website Security &amp; AMC</h3>
+        <p>
+            Ongoing maintenance and security support to help keep websites updated, monitored, and operational.
+        </p>
+    </div>
+    <div>
+        <div class="pillar-tags">Maintenance · Updates · Security Support</div>
+        <a href="/services/#amc" class="pillar-link">Explore Website Security &amp; AMC →</a>
+    </div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TRUSTED BY / CLIENT LOGOS -->
+
+<section class="section logos-section">
+
+<div class="container">
+
+<h2 class="section-title reveal">
+Trusted By
+</h2>
+
+<p class="section-sub reveal">
+Proud to have partnered with businesses across industries to build their secure digital presence.
+</p>
+
+<div class="logo-marquee reveal">
+    <div class="logo-track">
+        <div class="logo-item"><img src="{% static 'images/labor.jpeg' %}" alt="Labor Omnia Vincit In Robus"></div>
+        <div class="logo-item"><img src="{% static 'images/vrp_electrical.jpeg' %}" alt="VRP Electrical & Plumbing Work"></div>
+        <div class="logo-item"><img src="{% static 'images/VRP-Construction.png' %}" alt="VRP Constructions"></div>
+        <div class="logo-item"><img src="{% static 'images/om-muruga_master_mono_gold.png' %}" alt="Labor Omnia Vincit In Robus"></div>
+        <!-- duplicated for seamless infinite scroll -->
+        <div class="logo-item"><img src="{% static 'images/labor.jpeg' %}" alt="Labor Omnia Vincit In Robus"></div>
+        <div class="logo-item"><img src="{% static 'images/vrp_electrical.jpeg' %}" alt="VRP Electrical & Plumbing Work"></div>
+        <div class="logo-item"><img src="{% static 'images/VRP-Construction.png' %}" alt="VRP Constructions"></div>
+           <div class="logo-item"><img src="{% static 'images/om-muruga_master_mono_gold.png' %}" alt="Labor Omnia Vincit In Robus"></div>
+    </div>
+</div>
+
+</div>
+
+</section>
+
+<!-- PRODUCTS SECTION -->
+
+<section id="products" class="section">
+
+<div class="container">
+
+<h2 class="section-title reveal">
+    Products Built by CYVEXA
+</h2>
+
+<p class="section-sub reveal">
+    Purpose-built security tools and administrative platforms engineered in-house.
+</p>
+
+<div class="products-grid">
+
+    <!-- ARAN -->
+    <div class="product-card reveal">
+        <div>
+            <div class="product-header">
+                <h3>ARAN</h3>
+                <span class="product-badge">In Development / Pilot</span>
+            </div>
+            <div class="product-tagline">AI-Powered VAPT Assistant</div>
+            <p class="product-desc">
+                A security assessment and vulnerability intelligence platform designed to help teams understand findings, prioritize risks, and generate actionable reports.
+            </p>
+            <div class="product-tags">
+                <span class="product-tag">Asset Intelligence</span>
+                <span class="product-tag">Vulnerability Findings</span>
+                <span class="product-tag">Risk Prioritization</span>
+                <span class="product-tag">Reporting</span>
+            </div>
+        </div>
+        <div class="product-cta">
+            <a href="/contact/?product=ARAN" class="btn btn-outline">Explore ARAN</a>
+        </div>
+    </div>
+
+    <!-- CYVEXA School ERP -->
+    <div class="product-card reveal">
+        <div>
+            <div class="product-header">
+                <h3>CYVEXA School ERP</h3>
+                <span class="product-badge">In Development</span>
+            </div>
+            <div class="product-tagline">School Management &amp; Administration Platform</div>
+            <p class="product-desc">
+                A structured platform for managing student records, staff, attendance, academics, fees, communication, and school operations.
+            </p>
+            <div class="product-tags">
+                <span class="product-tag">Student Management</span>
+                <span class="product-tag">Staff</span>
+                <span class="product-tag">Attendance</span>
+                <span class="product-tag">Exams</span>
+                <span class="product-tag">Fees</span>
+                <span class="product-tag">Communication</span>
+            </div>
+        </div>
+        <div class="product-cta">
+            <a href="/contact/?product=SchoolERP" class="btn btn-outline">Explore School ERP</a>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SHOWCASE -->
+
+<section class="section">
+
+<div class="container showcase">
+
+<div class="showcase-image reveal">
+    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1600&auto=format&fit=crop"
+         alt="Secure Technology Infrastructure"
+         loading="lazy">
+</div>
+
+<div class="showcase-text reveal">
+    <h2>Security First Mindset</h2>
+
+    <p>
+        Every digital product we create is engineered with
+        resilience, security, and long-term sustainability.
+    </p>
+
+    <p>
+        From startups to enterprise platforms,
+        CYVEXA helps organizations innovate confidently
+        without compromising digital trust.
+    </p>
+
+    <a href="/about/" class="btn btn-primary">Learn More</a>
+</div>
+
+</div>
+
+</section>
+
+<!-- WHY CYVEXA -->
+
+<section class="section">
+
+<div class="container">
+
+<h2 class="section-title reveal">
+    Why CYVEXA
+</h2>
+
+<p class="section-sub reveal">
+    Practical, client-focused engineering combined with rigorous security discipline.
+</p>
+
+<div class="why-grid">
+
+    <div class="why-card reveal">
+        <div class="why-icon"></div>
+        <h3>Security-First Thinking</h3>
+        <p>Security is considered throughout assessment, development, and maintenance.</p>
+    </div>
+
+    <div class="why-card reveal">
+        <div class="why-icon"></div>
+        <h3>Technical + Practical</h3>
+        <p>We combine development and cybersecurity knowledge to solve real business needs.</p>
+    </div>
+
+    <div class="why-card reveal">
+        <div class="why-icon"></div>
+        <h3>Business-Focused Solutions</h3>
+        <p>Clear deliverables and solutions aligned with the client's requirements.</p>
+    </div>
+
+    <div class="why-card reveal">
+        <div class="why-icon"></div>
+        <h3>Built to Grow</h3>
+        <p>Services and software designed with maintainability and future expansion in mind.</p>
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SOLUTIONS FOR DIFFERENT INDUSTRIES -->
+
+<section id="industries" class="section">
+
+<div class="container">
+
+<h2 class="section-title reveal">
+    Solutions for Different Industries
+</h2>
+
+<p class="section-sub reveal">
+    Security-conscious digital systems engineered for the specialized requirements of each sector.
+</p>
+
+<div class="industries-grid">
+
+    <div class="industry-card reveal">
+        <h3>SMEs &amp; Startups</h3>
+        <p>Secure websites, VAPT, and ongoing support.</p>
+    </div>
+
+    <div class="industry-card reveal">
+        <h3>Educational Institutions</h3>
+        <p>Web solutions, security, ERP, and institutional programs.</p>
+    </div>
+
+    <div class="industry-card reveal">
+        <h3>Healthcare</h3>
+        <p>Security-conscious digital systems and web solutions.</p>
+    </div>
+
+    <div class="industry-card reveal">
+        <h3>Construction &amp; Professional Firms</h3>
+        <p>Business websites and maintenance solutions.</p>
+    </div>
+
+</div>
+
+<div class="industry-cta-wrap reveal">
+    <a href="/services/" class="btn btn-outline">Explore Industries</a>
+</div>
+
+</div>
+
+</section>
+
+<!-- TESTIMONIALS & FEEDBACK -->
+
+<section id="testimonials" class="testimonials-section">
+
+<div class="container">
+
+<h2 class="section-title reveal">
+    Client &amp; Institutional Feedback
+</h2>
+
+<p class="section-sub reveal">
+    Real feedback from business owners, academic leadership, and workshop participants.
+</p>
+
+<div class="testimonials-grid">
+
+    <!-- VRP Constructions -->
+    <div class="testimonial-card reveal">
+        <div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">
+                "An excellent logo design and website service. They truly understood our requirements and delivered a beautifully crafted, professional-quality result. High-quality service, a refined approach, and great collaboration. I highly recommend them for logo and website design."
+            </p>
+        </div>
+        <div class="testimonial-author-box">
+            <div class="testimonial-avatar">V</div>
+            <div>
+                <div class="testimonial-author-name">Vinothkumar</div>
+                <div class="testimonial-author-title">Owner — VRP Constructions</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Meenakshi Sundararajan Engineering College -->
+    <div class="testimonial-card reveal">
+        <div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">
+                "The CYVEXA Cybersecurity Workshop conducted at Meenakshi Sundararajan Engineering College was highly informative, engaging, and practically oriented. The sessions provided students with valuable hands-on exposure to cybersecurity fundamentals, ethical hacking concepts, cyber threats, network security, and current security practices. The trainers explained the concepts clearly with practical demonstrations and real-world examples, making the sessions interactive and easy to understand. The workshop significantly enhanced students’ technical knowledge, cybersecurity awareness, and interest in exploring careers in this rapidly growing domain. We sincerely appreciate the CYVEXA team for their professional approach, excellent technical guidance, and valuable contribution towards strengthening our students’ industry-ready cybersecurity skills.<br><br>
+                <strong>Overall Feedback:</strong> Excellent and highly beneficial workshop for our students. Especially I thank Veeramani Prakash M CEO, and Rokith for their continuous work in cyber field to enrich of our students."
+            </p>
+        </div>
+        <div class="testimonial-author-box">
+            <div class="testimonial-avatar">M</div>
+            <div>
+                <div class="testimonial-author-name">Dr. Vinothkumar</div>
+                <div class="testimonial-author-title">Professor — Meenakshi Sundararajan Engineering College (MSEC)</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Student Voices -->
+<h3 class="students-subhead reveal">Workshop Student Feedback — MSEC</h3>
+
+<div class="students-grid">
+
+    <div class="student-card reveal">
+        <div class="testimonial-stars">★★★★☆</div>
+        <p class="student-quote">
+            "A good initiative and knowledgeable people who create awareness about cybersecurity and networks."
+        </p>
+        <div class="student-meta">
+            <div class="student-name">Aishwarya S</div>
+            <div>Student — Meenakshi Sundararajan Engineering College</div>
+        </div>
+    </div>
+
+    <div class="student-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="student-quote">
+            "I would curious about what there actual work in the digital world."
+        </p>
+        <div class="student-meta">
+            <div class="student-name">Kishore V</div>
+            <div>Student — Meenakshi Sundararajan Engineering College</div>
+        </div>
+    </div>
+
+    <div class="student-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="student-quote">
+            "It handles prevention of data breaches before entering the businesses. Their hands on training was really insightful."
+        </p>
+        <div class="student-meta">
+            <div class="student-name">AVANTIKA V</div>
+            <div>Student — Meenakshi Sundararajan Engineering College</div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta">
+
+<div class="container">
+
+<div class="cta-box reveal">
+
+<h2>
+Ready To Secure Your Business?
+</h2>
+
+<p>
+Partner with CYVEXA to build secure,
+high-performance digital systems for the future.
+</p>
+
+<a href="https://wa.me/918903051053?text=Hi%20CYVEXA,%20Services,%20I%20am%20interested" class="btn btn-primary">
+Contact Us
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+    <div class="container footer-inner">
+        <div class="footer-brand">
+            <img src="{% static 'images/cyvexa_logo.png' %}" alt="CYVEXA Logo">
+            <h3>CYVEXA</h3>
+            <p>Cybersecurity and secure software solutions for businesses and institutions.<br>Build Secure. Operate Confidently.</p>
+        </div>
+
+        <div class="footer-col">
+            <strong>Company</strong>
+            <a href="/about/">About</a>
+            <a href="/works/">Work</a>
+            <a href="/#products">Products</a>
+            <a href="/#industries">Industries</a>
+        </div>
+
+        <div class="footer-col">
+            <strong>Services</strong>
+            <a href="/services/#vapt">Web VAPT</a>
+            <a href="/services/#web-dev">Secure Website Development</a>
+            <a href="/services/#amc">Website Security &amp; AMC</a>
+            <a href="/services/">All Services</a>
+        </div>
+
+        <div class="footer-col">
+            <strong>Resources</strong>
+            <a href="/blog/">Blog</a>
+            <a href="{% url 'event_list' %}">Events</a>
+            <a href="/contact/">Contact</a>
+            <a href="/contact/">FAQs</a>
+        </div>
+
+        <div class="footer-copy">
+            © 2026 CYVEXA. All rights reserved. &nbsp;|&nbsp;
+            <a href="/about/" style="color:#888; text-decoration:none;">Privacy Policy</a> ·
+            <a href="/about/" style="color:#888; text-decoration:none;">Terms</a> ·
+            <a href="/contact/" style="color:#888; text-decoration:none;">Responsible Disclosure</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+
+function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("active");
+}
+
+/* Close mobile menu when a link is clicked */
+document.querySelectorAll('#navMenu a').forEach(function(link){
+    link.addEventListener('click', function(){
+        document.getElementById("navMenu").classList.remove("active");
+    });
+});
+
+/* =========================
+SCROLL REVEAL
+========================= */
+
+const reveals = document.querySelectorAll('.reveal');
+
+function revealOnScroll(){
+    reveals.forEach((el)=>{
+        const windowHeight = window.innerHeight;
+        const revealTop = el.getBoundingClientRect().top;
+        if(revealTop < windowHeight - 100){
+            el.classList.add('active');
+        }
+    });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
+
+/* =========================
+NAVBAR HIDE
+========================= */
+
+let lastScroll = 0;
+const headerEl = document.getElementById('header');
+
+window.addEventListener('scroll', ()=>{
+    let current = window.pageYOffset;
+    if(current > lastScroll && current > 100){
+        headerEl.style.transform = 'translateY(-100%)';
+        headerEl.style.opacity = '0';
+    }else{
+        headerEl.style.transform = 'translateY(0)';
+        headerEl.style.opacity = '1';
+    }
+    lastScroll = current;
+});
+
+/* =========================
+FLOATING PARTICLES
+========================= */
+
+const particleCount = 40;
+
+for(let i=0; i<particleCount; i++){
+    const particle = document.createElement('div');
+    particle.style.position = 'fixed';
+    particle.style.width = Math.random()*3 + 'px';
+    particle.style.height = particle.style.width;
+    particle.style.background = 'rgba(255,255,255,0.25)';
+    particle.style.left = Math.random()*100 + 'vw';
+    particle.style.top = Math.random()*100 + 'vh';
+    particle.style.borderRadius = '50%';
+    particle.style.pointerEvents = 'none';
+    particle.style.zIndex = '-1';
+
+    particle.animate([
+        { transform:'translateY(0px)', opacity:0 },
+        { opacity:1 },
+        { transform:'translateY(-'+ (Math.random()*300+100) +'px)', opacity:0 }
+    ],{
+        duration: Math.random()*12000+6000,
+        iterations: Infinity
+    });
+
+    document.body.appendChild(particle);
+}
+
+</script>
+
+</body>
+</html>

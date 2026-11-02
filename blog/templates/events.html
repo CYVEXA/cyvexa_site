@@ -1,0 +1,1127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CYVEXA | Events</title>
+  <link rel="icon" type="image/png" href="{% static 'images/CYVEXA.png' %}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Search Console ownership verification -->
+  <meta name="google-site-verification" content="wV7ZCqJIu1mZjte3yJ7-PbyREoClOnEyqWwV9LP_n24" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JT3L0C97TQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-JT3L0C97TQ');
+  </script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#050505;
+    color:#ffffff;
+    overflow-x:hidden;
+    line-height:1.7;
+    padding-top:120px;
+}
+
+/* =========================
+BACKGROUND EFFECTS
+========================= */
+
+body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.06), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(255,255,255,0.04), transparent 30%);
+    z-index:-2;
+}
+
+.grid{
+    position:fixed;
+    inset:0;
+    background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:40px 40px;
+    z-index:-1;
+    mask-image:linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.1));
+}
+
+/* =========================
+CONTAINER
+========================= */
+
+.container{
+    width:min(1200px,90%);
+    margin:auto;
+}
+
+/* =========================
+HEADER
+========================= */
+
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    z-index:999;
+    backdrop-filter:blur(16px);
+    background:rgba(0,0,0,0.45);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    transition:0.4s ease;
+}
+
+header.navbar-hidden{
+    transform:translateY(-100%);
+}
+
+.header-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
+}
+
+.logo-wrapper{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.logo-wrapper img{
+    width:88px;
+    height:88px;
+    object-fit:contain;
+    filter:drop-shadow(0 0 15px rgba(255,255,255,0.3));
+}
+
+.logo-text{
+    font-size:1.4rem;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:35px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#fff;
+    font-weight:500;
+    position:relative;
+    transition:0.3s ease;
+}
+
+nav a::after{
+    content:'';
+    position:absolute;
+    width:0%;
+    height:2px;
+    left:0;
+    bottom:-8px;
+    background:#fff;
+    transition:0.3s ease;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+nav a:hover{
+    opacity:0.8;
+}
+
+/* =========================
+EVENTS HERO
+========================= */
+
+.events-hero{
+    min-height:35vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    padding:80px 0 40px;
+}
+
+.events-hero-content{
+    max-width:800px;
+}
+
+.events-hero h1{
+    font-size:clamp(2.5rem, 6vw, 4rem);
+    font-weight:800;
+    line-height:1.1;
+    margin-bottom:20px;
+    background:linear-gradient(135deg, #ffffff 0%, #bdbdbd 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+}
+
+.events-hero p{
+    font-size:clamp(1rem, 2.5vw, 1.2rem);
+    color:#a0a0a0;
+    max-width:600px;
+    margin:0 auto;
+}
+
+/* =========================
+SECTIONS
+========================= */
+
+.section{
+    padding:60px 0;
+}
+
+.section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:40px;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.section-title{
+    font-size:clamp(1.5rem, 3vw, 2rem);
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.section-title .icon{
+    font-size:1.5rem;
+}
+
+/* =========================
+CONTROLS & FILTER BAR
+========================= */
+
+.events-controls-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+    margin-bottom:45px;
+    padding-bottom:24px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.events-filter-group{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+    background:rgba(255,255,255,0.03);
+    padding:6px;
+    border-radius:50px;
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.filter-tab{
+    background:transparent;
+    border:none;
+    color:#a0a0a0;
+    padding:8px 18px;
+    border-radius:50px;
+    font-size:0.88rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:inherit;
+}
+
+.filter-tab:hover{
+    color:#fff;
+    background:rgba(255,255,255,0.06);
+}
+
+.filter-tab.active{
+    background:#fff;
+    color:#000;
+    box-shadow:0 4px 15px rgba(255,255,255,0.2);
+}
+
+.filter-count{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:20px;
+    height:20px;
+    padding:0 6px;
+    font-size:0.75rem;
+    border-radius:10px;
+    background:rgba(255,255,255,0.1);
+    color:#ccc;
+    font-weight:600;
+}
+
+.filter-tab.active .filter-count{
+    background:rgba(0,0,0,0.12);
+    color:#000;
+}
+
+.top-bar{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    margin-bottom:40px;
+}
+
+.btn{
+    padding:14px 32px;
+    border-radius:60px;
+    font-weight:600;
+    text-decoration:none;
+    transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    font-size:0.95rem;
+    border:none;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+}
+
+.btn-primary{
+    background:#fff;
+    color:#000;
+    box-shadow:0 4px 20px rgba(255,255,255,0.1);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px) scale(1.02);
+    box-shadow:0 12px 40px rgba(255,255,255,0.2);
+}
+
+.btn-outline{
+    border:1px solid rgba(255,255,255,0.2);
+    color:#fff;
+    background:transparent;
+    padding:10px 24px;
+    font-size:0.85rem;
+}
+
+.btn-outline:hover{
+    background:#fff;
+    color:#000;
+    transform:translateY(-2px);
+    box-shadow:0 8px 25px rgba(255,255,255,0.1);
+}
+
+/* =========================
+EVENT GRID
+========================= */
+
+.event-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(340px, 1fr));
+    gap:30px;
+    margin-bottom:60px;
+}
+
+/* =========================
+EVENT CARD
+========================= */
+
+.event-card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:24px;
+    overflow:hidden;
+    transition:all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    position:relative;
+}
+
+.event-card::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:3px;
+    background:linear-gradient(90deg, rgba(255,255,255,0.5), rgba(255,255,255,0.1), transparent);
+    opacity:0;
+    transition:opacity 0.4s ease;
+    z-index:2;
+}
+
+.event-card:hover::before{
+    opacity:1;
+}
+
+.event-card:hover{
+    transform:translateY(-10px);
+    border-color:rgba(255,255,255,0.18);
+    box-shadow:
+        0 30px 60px rgba(0,0,0,0.4),
+        0 0 0 1px rgba(255,255,255,0.1),
+        0 0 80px rgba(255,255,255,0.04);
+}
+
+.event-card .card-image{
+    width:100%;
+    height:220px;
+    overflow:hidden;
+    position:relative;
+}
+
+.event-card .card-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.event-card:hover .card-image img{
+    transform:scale(1.08);
+}
+
+.event-card .card-image::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to bottom, transparent 50%, rgba(5,5,5,0.9) 100%);
+    pointer-events:none;
+}
+
+.event-card .card-body{
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+}
+
+.event-card h3{
+    font-size:1.3rem;
+    font-weight:700;
+    margin-bottom:12px;
+    line-height:1.4;
+    color:#fff;
+}
+
+.event-card .description{
+    color:#b0b0b0;
+    font-size:0.95rem;
+    line-height:1.7;
+    margin-bottom:20px;
+    flex:1;
+}
+
+/* =========================
+META BADGES
+========================= */
+
+.event-meta{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.meta-badge{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:0.9rem;
+    color:#c0c0c0;
+}
+
+.meta-badge .label{
+    color:#888;
+    font-size:0.8rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    min-width:70px;
+}
+
+.meta-badge .value{
+    color:#fff;
+    font-weight:500;
+}
+
+/* =========================
+CARD STATUS BADGE & PILLS (INSIDE CARD)
+========================= */
+
+.card-status-badge{
+    position:absolute;
+    top:14px;
+    left:14px;
+    z-index:3;
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    padding:6px 14px;
+    border-radius:50px;
+    font-size:0.75rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+}
+
+.status-pulse-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    display:inline-block;
+}
+
+/* Status: Upcoming */
+.status-upcoming{
+    background:rgba(14, 165, 233, 0.18);
+    border:1px solid rgba(56, 189, 248, 0.5);
+    color:#38bdf8;
+    box-shadow:0 4px 16px rgba(14, 165, 233, 0.25);
+}
+.status-upcoming .status-pulse-dot{
+    background:#38bdf8;
+    box-shadow:0 0 8px #38bdf8;
+}
+
+/* Status: Ongoing */
+.status-ongoing{
+    background:rgba(34, 197, 94, 0.2);
+    border:1px solid rgba(34, 197, 94, 0.55);
+    color:#4ade80;
+    box-shadow:0 4px 16px rgba(34, 197, 94, 0.25);
+}
+.status-ongoing .status-pulse-dot{
+    background:#22c55e;
+    box-shadow:0 0 10px #22c55e;
+    animation:pulse-live 1.8s infinite;
+}
+
+@keyframes pulse-live{
+    0%{ transform:scale(0.9); box-shadow:0 0 0 0 rgba(34,197,94,0.7); }
+    70%{ transform:scale(1.15); box-shadow:0 0 0 7px rgba(34,197,94,0); }
+    100%{ transform:scale(0.9); box-shadow:0 0 0 0 rgba(34,197,94,0); }
+}
+
+/* Status: Completed */
+.status-completed{
+    background:rgba(255, 255, 255, 0.08);
+    border:1px solid rgba(255, 255, 255, 0.18);
+    color:#b0b0b0;
+    box-shadow:0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.status-completed .status-pulse-dot{
+    background:#888;
+}
+
+/* Type Pill (Top Right of Card Image) */
+.card-type-badge{
+    position:absolute;
+    top:14px;
+    right:14px;
+    z-index:3;
+    padding:5px 12px;
+    border-radius:50px;
+    background:rgba(0, 0, 0, 0.55);
+    border:1px solid rgba(255, 255, 255, 0.15);
+    color:#e0e0e0;
+    font-size:0.75rem;
+    font-weight:600;
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+}
+
+/* Status Value in Meta */
+.status-val{
+    font-weight:600;
+}
+.status-val-upcoming{
+    color:#38bdf8 !important;
+}
+.status-val-ongoing{
+    color:#4ade80 !important;
+}
+.status-val-completed{
+    color:#888 !important;
+}
+
+/* Placeholder for cards without images */
+.placeholder-pattern{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%),
+               radial-gradient(circle at center, rgba(56,189,248,0.1) 0%, transparent 70%);
+}
+.placeholder-text{
+    font-size:0.85rem;
+    letter-spacing:3px;
+    font-weight:800;
+    color:rgba(255,255,255,0.3);
+}
+
+/* =========================
+CARD ACTIONS
+========================= */
+
+.card-actions{
+    display:flex;
+    gap:10px;
+    margin-top:auto;
+    padding-top:16px;
+    border-top:1px solid rgba(255,255,255,0.06);
+}
+
+.card-actions form{
+    display:inline;
+}
+
+/* =========================
+EMPTY STATE
+========================= */
+
+.empty-state{
+    text-align:center;
+    padding:60px 20px;
+    color:#666;
+    font-size:1.1rem;
+    grid-column:1 / -1;
+    background:rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:20px;
+}
+
+/* =========================
+DIVIDER BETWEEN SECTIONS
+========================= */
+
+.section-divider{
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    margin:20px 0 60px;
+    border:none;
+}
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+    padding:70px 0 40px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    margin-top:40px;
+}
+
+.footer-inner{
+    display:flex;
+    justify-content:space-between;
+    gap:50px;
+    flex-wrap:wrap;
+}
+
+.footer-brand{
+    max-width:320px;
+}
+
+.footer-brand img{
+    width:50px;
+    height:50px;
+    object-fit:contain;
+    margin-bottom:14px;
+    filter:drop-shadow(0 0 12px rgba(255,255,255,0.2));
+}
+
+.footer-brand h3{
+    font-size:1.3rem;
+    margin-bottom:10px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.footer-brand p{
+    font-size:0.95rem;
+    color:#888;
+    line-height:1.6;
+}
+
+.footer-col{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.footer-col strong{
+    color:#fff;
+    font-size:0.9rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    margin-bottom:6px;
+}
+
+.footer-col a{
+    color:#a0a0a0;
+    text-decoration:none;
+    transition:0.3s ease;
+    font-size:0.95rem;
+}
+
+.footer-col a:hover{
+    color:#fff;
+    transform:translateX(4px);
+}
+
+.footer-auth{
+    margin-top:12px;
+    padding-top:12px;
+    border-top:1px solid rgba(255,255,255,0.06);
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.footer-auth span{
+    color:#fff;
+    font-size:0.9rem;
+    font-weight:600;
+}
+
+.footer-copy{
+    width:100%;
+    text-align:center;
+    margin-top:60px;
+    color:#666;
+    border-top:1px solid rgba(255,255,255,0.06);
+    padding-top:30px;
+    font-size:0.9rem;
+}
+
+/* =========================
+ANIMATIONS
+========================= */
+
+@keyframes float{
+    0%{ transform:translateY(0px); }
+    50%{ transform:translateY(-20px); }
+    100%{ transform:translateY(0px); }
+}
+
+.reveal{
+    opacity:0;
+    transform:translateY(50px);
+    transition:all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================
+MENU BUTTON
+========================= */
+
+.menu-toggle{
+    display:none;
+    font-size:26px;
+    cursor:pointer;
+}
+
+/* =========================
+MOBILE NAV
+========================= */
+
+@media (max-width: 980px) {
+    .menu-toggle{
+        display:block;
+    }
+
+    nav{
+        position:fixed;
+        top:80px;
+        right:-280px;
+        width:260px;
+        height:calc(100vh - 80px);
+        background:#111;
+        box-shadow:-10px 0 40px rgba(0,0,0,0.5);
+        transition:right 0.35s ease;
+        z-index:998;
+    }
+
+    nav.active{
+        right:0;
+    }
+
+    nav ul{
+        flex-direction:column;
+        justify-content:flex-start;
+        align-items:center;
+        height:100%;
+        gap:28px;
+        padding-top:50px;
+    }
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+    body{
+        padding-top:100px;
+    }
+
+    .events-hero{
+        min-height:25vh;
+        padding:40px 0 20px;
+    }
+
+    .event-grid{
+        grid-template-columns:1fr;
+        gap:24px;
+    }
+
+    .event-card .card-image{
+        height:200px;
+    }
+
+    .section{
+        padding:40px 0;
+    }
+
+    .section-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .events-controls-bar{
+        flex-direction:column;
+        align-items:stretch;
+        gap:15px;
+    }
+
+    .events-filter-group{
+        width:100%;
+        justify-content:center;
+    }
+
+    .filter-tab{
+        flex:1;
+        justify-content:center;
+        padding:8px 10px;
+        font-size:0.8rem;
+    }
+
+    .top-bar{
+        justify-content:center;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .card-actions{
+        flex-direction:column;
+    }
+
+    .card-actions .btn-outline{
+        width:100%;
+        text-align:center;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="grid"></div>
+
+<!-- HEADER -->
+<header id="header">
+    <div class="container header-inner">
+        <div class="logo-wrapper">
+            <a class="logo" href="/">
+                <img src="{% static 'images/cyvexa_logo.png' %}" alt="logo">
+            </a>
+            <span class="logo-text">CYVEXA</span>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <nav class="nav" id="mobileMenu">
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/services/">Services</a></li>
+                <li><a href="/works/">Works</a></li>
+                <li><a href="/contact/">Contact</a></li>
+                <li><a href="{% url 'blog_list' %}">Blog</a></li>
+                <li><a href="{% url 'event_list' %}">Events</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <!-- EVENTS HERO -->
+    <section class="events-hero reveal">
+        <div class="container events-hero-content">
+            <h1>Events</h1>
+            <p>Join us for workshops, webinars, and conferences. Stay updated with our latest tech events and community gatherings.</p>
+        </div>
+    </section>
+
+    <!-- EVENTS CONTENT -->
+    <section class="section">
+        <div class="container">
+
+            <!-- CONTROLS & FILTER BAR -->
+            <div class="events-controls-bar reveal">
+                <div class="events-filter-group" role="tablist" aria-label="Filter events by status">
+                    <button type="button" class="filter-tab active" data-filter="all">
+                        All <span class="filter-count">{{ total_count }}</span>
+                    </button>
+                    <button type="button" class="filter-tab" data-filter="upcoming">
+                        Upcoming <span class="filter-count">{{ upcoming_count }}</span>
+                    </button>
+                    <button type="button" class="filter-tab" data-filter="ongoing">
+                        Ongoing <span class="filter-count">{{ ongoing_count }}</span>
+                    </button>
+                    <button type="button" class="filter-tab" data-filter="completed">
+                        Completed <span class="filter-count">{{ completed_count }}</span>
+                    </button>
+                </div>
+
+                {% if user.is_authenticated and user.is_staff %}
+                <div class="admin-actions">
+                    <a href="{% url 'add_event' %}" class="btn btn-primary">➕ Add Event</a>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- UNIFIED EVENTS GRID -->
+            <div class="event-grid" id="eventsGrid">
+                {% for event in events %}
+                <article class="event-card reveal" data-status="{{ event.status|lower }}">
+                    <div class="card-image">
+                        {% if event.image %}
+                        <img src="{{ event.image.url }}" alt="{{ event.title }}">
+                        {% else %}
+                        <div class="placeholder-pattern">
+                            <span class="placeholder-text">CYVEXA EVENT</span>
+                        </div>
+                        {% endif %}
+
+                        <!-- STATUS BADGE INSIDE CARD -->
+                        <div class="card-status-badge status-{{ event.status|lower }}">
+                            <span class="status-pulse-dot"></span>
+                            <span class="status-label">{{ event.status }}</span>
+                        </div>
+
+                        {% if event.event_type %}
+                        <div class="card-type-badge">
+                            {{ event.event_type }}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="card-body">
+                        <h3>{{ event.title }}</h3>
+                        <p class="description">{{ event.description|truncatewords:15 }}</p>
+                        <div class="event-meta">
+                            <div class="meta-badge">
+                                <span class="label">Status</span>
+                                <span class="value status-val status-val-{{ event.status|lower }}">{{ event.status }}</span>
+                            </div>
+                            <div class="meta-badge">
+                                <span class="label">Starts</span>
+                                <span class="value">{{ event.start_date }}</span>
+                            </div>
+                            <div class="meta-badge">
+                                <span class="label">Location</span>
+                                <span class="value">{{ event.location }}</span>
+                            </div>
+                        </div>
+                        {% if user.is_authenticated and user.is_staff %}
+                        <div class="card-actions">
+                            <a href="{% url 'edit_event' event.id %}" class="btn btn-outline">Edit</a>
+                            <form method="POST" action="{% url 'delete_event' event.id %}" onsubmit="return confirm('Are you sure you want to delete this event?')">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline">Delete</button>
+                            </form>
+                        </div>
+                        {% endif %}
+                    </div>
+                </article>
+                {% empty %}
+                <div class="empty-state reveal">
+                    <p>No events found at the moment. Check back soon!</p>
+                </div>
+                {% endfor %}
+
+                <div id="filterEmptyState" class="empty-state" style="display: none; grid-column: 1 / -1;">
+                    <p>No events found for the selected category.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container footer-inner">
+        <div class="footer-brand">
+            <img src="{% static 'images/cyvexa_logo.png' %}" alt="CYVEXA Logo">
+            <h3>CYVEXA</h3>
+            <p>Cybersecurity and secure software solutions for businesses and institutions.<br>Build Secure. Operate Confidently.</p>
+        </div>
+
+        <div class="footer-col">
+            <strong>Company</strong>
+            <a href="/about/">About</a>
+            <a href="/works/">Work</a>
+            <a href="/#products">Products</a>
+            <a href="/#industries">Industries</a>
+        </div>
+
+        <div class="footer-col">
+            <strong>Services</strong>
+            <a href="/services/#vapt">Web VAPT</a>
+            <a href="/services/#web-dev">Secure Website Development</a>
+            <a href="/services/#amc">Website Security &amp; AMC</a>
+            <a href="/services/">All Services</a>
+        </div>
+
+        <div class="footer-col">
+            <strong>Resources</strong>
+            <a href="/blog/">Blog</a>
+            <a href="{% url 'event_list' %}">Events</a>
+            <a href="/contact/">Contact</a>
+            <a href="/contact/">FAQs</a>
+            <div class="footer-auth" style="margin-top:10px;">
+                {% if user.is_authenticated %}
+                <span>Hi, {{ user.username }}</span>
+                <a href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                <a href="{% url 'login' %}">Login</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="footer-copy">
+            © 2026 CYVEXA. All rights reserved. &nbsp;|&nbsp;
+            <a href="/about/" style="color:#888; text-decoration:none;">Privacy Policy</a> ·
+            <a href="/about/" style="color:#888; text-decoration:none;">Terms</a> ·
+            <a href="/contact/" style="color:#888; text-decoration:none;">Responsible Disclosure</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById("mobileMenu").classList.toggle("active");
+}
+
+function confirmDelete() {
+    return confirm("Are you sure you want to delete?");
+}
+
+let lastScrollTop = 0;
+const header = document.getElementById('header');
+
+window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+        header.classList.add('navbar-hidden');
+    } else {
+        header.classList.remove('navbar-hidden');
+    }
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+});
+
+function revealOnScroll() {
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach((el) => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        const revealPoint = 100;
+        if (elementTop < windowHeight - revealPoint) {
+            el.classList.add('active');
+        }
+    });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
+
+// Filter Tabs Logic
+const filterTabs = document.querySelectorAll('.filter-tab');
+const eventCards = document.querySelectorAll('.event-card');
+const filterEmptyState = document.getElementById('filterEmptyState');
+
+filterTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+        filterTabs.forEach((t) => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filter = tab.getAttribute('data-filter');
+        let visibleCount = 0;
+
+        eventCards.forEach((card) => {
+            const status = card.getAttribute('data-status');
+            if (filter === 'all' || status === filter) {
+                card.style.display = '';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        if (filterEmptyState) {
+            filterEmptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        revealOnScroll();
+    });
+});
+</script>
+
+</body>
+</html>

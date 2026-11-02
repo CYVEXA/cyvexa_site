@@ -1,0 +1,1556 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact | CYVEXA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Search Console ownership verification -->
+<meta name="google-site-verification" content="wV7ZCqJIu1mZjte3yJ7-PbyREoClOnEyqWwV9LP_n24" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JT3L0C97TQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JT3L0C97TQ');
+</script>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+
+    font-family: 'Inter', sans-serif;
+
+    background: #050505;
+
+    color: #ffffff;
+
+    line-height: 1.6;
+
+    min-height: 100vh;
+
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container {
+
+    width: min(1200px, 90%);
+
+    margin: auto;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
+
+    position: fixed;
+
+    width: 100%;
+
+    top: 0;
+
+    left: 0;
+
+    z-index: 999;
+
+    backdrop-filter: blur(16px);
+
+    -webkit-backdrop-filter: blur(16px);
+
+    background: rgba(0, 0, 0, 0.45);
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    transition: 0.4s ease;
+
+}
+
+
+/* HEADER INNER */
+
+.header-inner {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 25px 0;
+
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo-wrapper {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+}
+
+
+.logo-wrapper img {
+
+    width: 80px;
+
+    height: 80px;
+
+    object-fit: contain;
+
+    filter: drop-shadow(
+        0 0 15px rgba(255,255,255,0.3)
+    );
+
+}
+
+
+.logo-text {
+
+    font-size: 1.4rem;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+nav ul {
+
+    display: flex;
+
+    list-style: none;
+
+    gap: 35px;
+
+}
+
+
+nav a {
+
+    text-decoration: none;
+
+    color: #ffffff;
+
+    font-weight: 500;
+
+    position: relative;
+
+    transition: 0.3s ease;
+
+}
+
+
+nav a::after {
+
+    content: '';
+
+    position: absolute;
+
+    width: 0%;
+
+    height: 2px;
+
+    left: 0;
+
+    bottom: -8px;
+
+    background: #ffffff;
+
+    transition: 0.3s ease;
+
+}
+
+
+nav a:hover::after {
+
+    width: 100%;
+
+}
+
+
+nav a:hover {
+
+    opacity: 0.8;
+
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+========================================================= */
+
+.menu-toggle {
+
+    display: none;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    color: #ffffff;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.services-hero {
+
+    padding: 160px 0 70px;
+
+    text-align: center;
+
+}
+
+
+.services-title {
+
+    font-size: 3rem;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+}
+
+
+.services-subtitle {
+
+    color: #bdbdbd;
+
+    margin-top: 8px;
+
+    font-size: 1.05rem;
+
+}
+
+
+/* =========================================================
+   ENQUIRY SECTION
+========================================================= */
+
+.enquiry-section {
+
+    padding: 35px 0 100px;
+
+}
+
+
+/* HEADING */
+
+.enquiry-heading {
+
+    text-align: left;
+
+    margin-bottom: 32px;
+
+}
+
+
+.enquiry-heading h2 {
+
+    font-size: 2rem;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+
+}
+
+
+.enquiry-heading p {
+
+    color: #bdbdbd;
+
+    font-size: 1rem;
+
+    max-width: 1000px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   FORM BOX
+========================================================= */
+
+.enquiry-box {
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    border-radius: 16px;
+
+    padding: 30px;
+
+    background: rgba(255,255,255,0.015);
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,0.25);
+
+}
+
+
+.enquiry-box h3 {
+
+    font-size: 1.15rem;
+
+    margin-bottom: 28px;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.enquiry-form {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 22px;
+
+}
+
+
+/* FORM GROUP */
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.form-group.full {
+
+    grid-column: 1 / -1;
+
+}
+
+
+/* LABEL */
+
+.form-group label {
+
+    color: #ffffff;
+
+    font-size: 0.94rem;
+
+    margin-bottom: 9px;
+
+    font-weight: 500;
+
+}
+
+
+.form-group label span {
+
+    color: #ff4d4d;
+
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border-radius: 10px;
+
+    border: 1px solid rgba(255,255,255,0.14);
+
+    background: rgba(255,255,255,0.035);
+
+    color: #ffffff;
+
+    outline: none;
+
+    font-family: 'Inter', sans-serif;
+
+    font-size: 0.94rem;
+
+    transition: 0.3s ease;
+
+}
+
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+
+    border-color: rgba(255,255,255,0.65);
+
+    background: rgba(255,255,255,0.055);
+
+    box-shadow:
+        0 0 0 3px rgba(255,255,255,0.03);
+
+}
+
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+
+    color: #6f6f6f;
+
+}
+
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+.form-group textarea {
+
+    min-height: 140px;
+
+    resize: vertical;
+
+}
+
+
+/* =========================================================
+   SERVICE DROPDOWN
+========================================================= */
+
+.form-group select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.03);
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.form-group select:focus {
+    border-color: rgba(255,255,255,0.45);
+    background: rgba(255,255,255,0.05);
+}
+
+.form-group select:invalid {
+    color: #8a8a8a;
+}
+
+.form-group select option {
+    background: #111111;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.submit-enquiry {
+
+    grid-column: 1 / -1;
+
+    display: flex;
+
+    justify-content: flex-start;
+
+    margin-top: 5px;
+
+}
+
+
+.submit-enquiry button {
+
+    padding: 14px 28px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: #ffffff;
+
+    color: #000000;
+
+    font-family: 'Inter', sans-serif;
+
+    font-size: 0.95rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+
+}
+
+
+.submit-enquiry button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(255,255,255,0.15);
+
+}
+
+
+.submit-enquiry button:active {
+
+    transform: translateY(0);
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    padding: 70px 0 40px;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+
+}
+
+
+.footer-inner {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 50px;
+
+    flex-wrap: wrap;
+
+}
+
+
+/* FOOTER BRAND */
+
+.footer-brand {
+
+    max-width: 320px;
+
+}
+
+
+.footer-brand img {
+
+    width: 50px;
+
+    height: 50px;
+
+    object-fit: contain;
+
+    margin-bottom: 14px;
+
+    filter:
+        drop-shadow(
+            0 0 12px rgba(255,255,255,0.2)
+        );
+
+}
+
+
+.footer-brand h3 {
+
+    font-size: 1.3rem;
+
+    margin-bottom: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+}
+
+
+.footer-brand p {
+
+    font-size: 0.95rem;
+
+    color: #888;
+
+    line-height: 1.6;
+
+}
+
+
+/* FOOTER COLUMNS */
+
+.footer-col {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+}
+
+
+.footer-col strong {
+
+    color: #ffffff;
+
+    font-size: 0.9rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.1em;
+
+    margin-bottom: 6px;
+
+}
+
+
+.footer-col a {
+
+    color: #a0a0a0;
+
+    text-decoration: none;
+
+    transition: 0.3s ease;
+
+    font-size: 0.95rem;
+
+}
+
+
+.footer-col a:hover {
+
+    color: #ffffff;
+
+    transform: translateX(4px);
+
+}
+
+
+/* COPYRIGHT */
+
+.footer-copy {
+
+    width: 100%;
+
+    text-align: center;
+
+    margin-top: 60px;
+
+    color: #666;
+
+    border-top: 1px solid rgba(255,255,255,0.06);
+
+    padding-top: 30px;
+
+    font-size: 0.9rem;
+
+}
+
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+.reveal {
+
+    opacity: 0;
+
+    transform: translateY(40px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+
+}
+
+
+.reveal.active {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+@media (max-width: 980px) {
+
+    .menu-toggle {
+
+        display: block;
+
+    }
+
+
+    nav {
+
+        position: fixed;
+
+        top: 90px;
+
+        right: -280px;
+
+        width: 260px;
+
+        height: calc(100vh - 90px);
+
+        background: #111111;
+
+        box-shadow:
+            -10px 0 40px rgba(0,0,0,0.5);
+
+        transition: right 0.35s ease;
+
+        z-index: 998;
+
+        border-left:
+            1px solid rgba(255,255,255,0.08);
+
+    }
+
+
+    nav.active {
+
+        right: 0;
+
+    }
+
+
+    nav ul {
+
+        flex-direction: column;
+
+        justify-content: flex-start;
+
+        align-items: center;
+
+        height: 100%;
+
+        gap: 28px;
+
+        padding-top: 50px;
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .services-title {
+
+        font-size: 2.2rem;
+
+    }
+
+
+    .enquiry-heading h2 {
+
+        font-size: 1.65rem;
+
+    }
+
+
+    .enquiry-box {
+
+        padding: 22px;
+
+    }
+
+
+    .enquiry-form {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .form-group.full {
+
+        grid-column: auto;
+
+    }
+
+
+    .submit-enquiry {
+
+        grid-column: auto;
+
+    }
+
+
+    .interest-options {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .container {
+
+        width: 92%;
+
+    }
+
+
+    .services-hero {
+
+        padding-top: 140px;
+
+    }
+
+
+    .services-title {
+
+        font-size: 2rem;
+
+    }
+
+
+    .services-subtitle {
+
+        font-size: 0.9rem;
+
+    }
+
+
+    .enquiry-section {
+
+        padding-top: 20px;
+
+    }
+
+
+    .enquiry-box {
+
+        padding: 18px;
+
+        border-radius: 12px;
+
+    }
+
+
+    .enquiry-heading p {
+
+        font-size: 0.9rem;
+
+    }
+
+
+    .submit-enquiry button {
+
+        width: 100%;
+
+    }
+
+
+    .footer-inner {
+
+        gap: 35px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header id="header">
+
+    <div class="container header-inner">
+
+
+        <!-- LOGO -->
+
+        <div class="logo-wrapper">
+
+            <img
+                src="{% static 'images/cyvexa_logo.png' %}"
+                alt="CYVEXA Logo"
+            >
+
+            <div class="logo-text">
+                CYVEXA
+            </div>
+
+        </div>
+
+
+        <!-- MOBILE MENU -->
+
+        <div
+            class="menu-toggle"
+            onclick="toggleMenu()"
+            aria-label="Open Menu"
+        >
+            ☰
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav id="mobileMenu">
+
+            <ul>
+
+                <li>
+                    <a class="nav-link" href="/">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a class="nav-link" href="/about/">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a class="nav-link" href="/services/">
+                        Services
+                    </a>
+                </li>
+
+                <li>
+                    <a class="nav-link" href="/works/">
+                        Works
+                    </a>
+                </li>
+
+                <li>
+                    <a class="nav-link" href="/contact/">
+                        Contact
+                    </a>
+                </li>
+
+                <li>
+                    <a class="nav-link" href="/blog/">
+                        Blog
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        class="nav-link"
+                        href="{% url 'event_list' %}"
+                    >
+                        Events
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     CONTACT HERO
+===================================================== -->
+
+<section class="services-hero reveal">
+
+    <div class="container">
+
+        <h1 class="services-title">
+            CONTACT
+        </h1>
+
+        <p class="services-subtitle">
+            Let’s Build Something Secure Together
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ENQUIRY SECTION
+===================================================== -->
+
+<section class="enquiry-section reveal">
+
+    <div class="container">
+
+
+        <!-- HEADING -->
+
+        <div class="enquiry-heading">
+
+            <h2>
+                Let's Discuss Your Requirement
+            </h2>
+
+            <p>
+                Tell us what you need help with. Whether you're looking
+                to secure a website, build a digital solution, or explore
+                a product, our team can understand your requirements and
+                suggest the next step.
+            </p>
+
+        </div>
+
+
+
+        <!-- FORM BOX -->
+
+        <div class="enquiry-box">
+
+            <h3>
+                Enquiry Form
+            </h3>
+
+
+            <form
+                class="enquiry-form"
+                id="enquiryForm"
+            >
+
+
+                <!-- =====================================
+                     FULL NAME
+                ====================================== -->
+
+                <div class="form-group">
+
+                    <label for="fullName">
+
+                        Full Name
+                        <span>*</span>
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- =====================================
+                     EMAIL
+                ====================================== -->
+
+                <div class="form-group">
+
+                    <label for="email">
+
+                        Work Email
+                        <span>*</span>
+
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your work email"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- =====================================
+                     PHONE
+                ====================================== -->
+
+                <div class="form-group">
+
+                    <label for="phone">
+
+                        Phone Number
+
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter your phone number"
+                        autocomplete="tel"
+                    >
+
+                </div>
+
+
+
+                <!-- =====================================
+                     ORGANIZATION
+                ====================================== -->
+
+                <div class="form-group">
+
+                    <label for="organization">
+
+                        Organization / Company
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="organization"
+                        name="organization"
+                        placeholder="Company / Organization name"
+                        autocomplete="organization"
+                    >
+
+                </div>
+
+
+
+                <!-- =====================================
+                     SERVICE REQUIRED
+                ====================================== -->
+
+                <div class="form-group full">
+
+                    <label for="interest">
+                        Service Required
+                        <span>*</span>
+                    </label>
+
+                    <select id="interest" name="interest" required>
+                        <option value="" selected disabled>Select a service</option>
+                        <option value="Web VAPT">Web VAPT</option>
+                        <option value="Secure Website Development">Secure Website Development</option>
+                        <option value="Website Security & AMC">Website Security &amp; AMC</option>
+                        <option value="Website Maintenance">Website Maintenance</option>
+                        <option value="UI/UX Design">UI/UX Design</option>
+                        <option value="Logo Design & Brand Identity">Logo Design &amp; Brand Identity</option>
+                        <option value="Technical Training / Cybersecurity Education">Technical Training / Cybersecurity Education</option>
+                        <option value="Products / Demo">Products / Demo</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                </div>
+
+
+
+                     
+                <div class="form-group full">
+
+                    <label for="description">
+
+                        Project / Requirement Description
+                        <span>*</span>
+
+                    </label>
+
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        placeholder="Tell us about your project or requirement..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- =====================================
+                     SUBMIT
+                ====================================== -->
+
+                <div class="submit-enquiry">
+
+                    <button type="submit">
+
+                        Submit Enquiry
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+    <div class="container footer-inner">
+        <div class="footer-brand">
+            <img src="{% static 'images/cyvexa_logo.png' %}" alt="CYVEXA Logo">
+            <h3>CYVEXA</h3>
+            <p>Cybersecurity and secure software solutions for businesses and institutions.<br>Build Secure. Operate Confidently.</p>
+        </div>
+
+        <div class="footer-col">
+            <strong>Company</strong>
+            <a href="/about/">About</a>
+            <a href="/works/">Work</a>
+            <a href="/#products">Products</a>
+            <a href="/#industries">Industries</a>
+        </div>
+
+        <div class="footer-col">
+            <strong>Services</strong>
+            <a href="/services/#vapt">Web VAPT</a>
+            <a href="/services/#web-dev">Secure Website Development</a>
+            <a href="/services/#amc">Website Security &amp; AMC</a>
+            <a href="/services/">All Services</a>
+        </div>
+
+        <div class="footer-col">
+            <strong>Resources</strong>
+            <a href="/blog/">Blog</a>
+            <a href="{% url 'event_list' %}">Events</a>
+            <a href="/contact/">Contact</a>
+            <a href="/contact/">FAQs</a>
+        </div>
+
+        <div class="footer-copy">
+            © 2026 CYVEXA. All rights reserved. &nbsp;|&nbsp;
+            <a href="/about/" style="color:#888; text-decoration:none;">Privacy Policy</a> ·
+            <a href="/about/" style="color:#888; text-decoration:none;">Terms</a> ·
+            <a href="/contact/" style="color:#888; text-decoration:none;">Responsible Disclosure</a>
+        </div>
+    </div>
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+function toggleMenu() {
+
+    const menu =
+        document.getElementById("mobileMenu");
+
+    menu.classList.toggle("active");
+
+}
+
+
+/* CLOSE MOBILE MENU AFTER CLICK */
+
+document.querySelectorAll(".nav-link").forEach(function(link) {
+
+    link.addEventListener("click", function() {
+
+        document
+            .getElementById("mobileMenu")
+            .classList.remove("active");
+
+    });
+
+});
+
+
+
+/* =====================================================
+   REVEAL ANIMATION
+===================================================== */
+
+function revealOnScroll() {
+
+    const reveals =
+        document.querySelectorAll(".reveal");
+
+
+    reveals.forEach(function(el) {
+
+        const windowHeight =
+            window.innerHeight;
+
+        const elementTop =
+            el.getBoundingClientRect().top;
+
+        const revealPoint = 100;
+
+
+        if (
+            elementTop <
+            windowHeight - revealPoint
+        ) {
+
+            el.classList.add("active");
+
+        }
+
+    });
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    revealOnScroll
+);
+
+
+window.addEventListener(
+    "load",
+    revealOnScroll
+);
+
+
+
+/* =====================================================
+   WHATSAPP ENQUIRY
+===================================================== */
+
+document
+    .getElementById("enquiryForm")
+    .addEventListener("submit", function(e) {
+
+
+        /* STOP NORMAL FORM SUBMISSION */
+
+        e.preventDefault();
+
+
+
+        /* ==========================================
+           GET FORM VALUES
+        ========================================== */
+
+        const name =
+            document
+                .getElementById("fullName")
+                .value
+                .trim();
+
+
+        const email =
+            document
+                .getElementById("email")
+                .value
+                .trim();
+
+
+        const phone =
+            document
+                .getElementById("phone")
+                .value
+                .trim();
+
+
+        const organization =
+            document
+                .getElementById("organization")
+                .value
+                .trim();
+
+
+        const description =
+            document
+                .getElementById("description")
+                .value
+                .trim();
+
+
+
+        /* ==========================================
+           GET AND VALIDATE SELECTED SERVICE
+        ========================================== */
+
+        const selectedInterest =
+            document.getElementById("interest").value;
+
+        if (!selectedInterest) {
+            alert("Please select a service required.");
+            document.getElementById("interest").focus();
+            return;
+        }
+
+
+
+        /* ==========================================
+           CREATE WHATSAPP MESSAGE
+        ========================================== */
+
+        const message =
+
+`*CYVEXA - NEW ENQUIRY*
+
+━━━━━━━━━━━━━━━━━━
+
+*Full Name:*
+${name}
+
+*Work Email:*
+${email}
+
+*Phone Number:*
+${phone || "Not provided"}
+
+*Organization / Company:*
+${organization || "Not provided"}
+
+*Interested In:*
+${selectedInterest}
+
+*Project / Requirement:*
+${description}
+
+━━━━━━━━━━━━━━━━━━
+
+Sent from CYVEXA Website`;
+
+
+
+        /* ==========================================
+           CYVEXA WHATSAPP NUMBER
+           
+           91 = INDIA
+           8903051053 = NUMBER
+        ========================================== */
+
+        const whatsappNumber =
+            "918903051053";
+
+
+
+        /* ==========================================
+           CREATE WHATSAPP URL
+        ========================================== */
+
+        const whatsappURL =
+
+            "https://wa.me/" +
+            whatsappNumber +
+            "?text=" +
+            encodeURIComponent(message);
+
+
+
+        /* ==========================================
+           OPEN WHATSAPP
+        ========================================== */
+
+        window.open(
+            whatsappURL,
+            "_blank"
+        );
+
+
+    });
+
+</script>
+
+
+</body>
+
+</html>

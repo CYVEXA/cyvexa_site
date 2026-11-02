@@ -1,0 +1,8 @@
+[project]
+name = "cyvexa"
+version = "1.0.0"
+description = "CYVEXA full-stack Django website"
+requires-python = ">=3.10,<3.13"
+
+[tool.vercel]
+entrypoint = "backend.wsgi:application"

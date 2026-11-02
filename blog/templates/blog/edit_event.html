@@ -1,0 +1,386 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | CYVEXA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Inter',sans-serif;
+  background:#050505;
+  color:#fff;
+  line-height:1.6;
+}
+
+/* container */
+.container{
+  width:min(1200px,90%);
+  margin:auto;
+}
+
+
+/* =========================
+HEADER
+========================= */
+
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    z-index:999;
+    backdrop-filter:blur(16px);
+    background:rgba(0,0,0,0.45);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    transition:0.4s ease;
+}
+
+.header-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
+}
+
+.logo-wrapper{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.logo-wrapper img{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+    filter:drop-shadow(0 0 15px rgba(255,255,255,0.3));
+}
+
+.logo-text{
+    font-size:1.4rem;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:35px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#fff;
+    font-weight:500;
+    position:relative;
+    transition:0.3s ease;
+}
+
+nav a::after{
+    content:'';
+    position:absolute;
+    width:0%;
+    height:2px;
+    left:0;
+    bottom:-8px;
+    background:#fff;
+    transition:0.3s ease;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+nav a:hover{
+    opacity:0.8;
+}
+
+/* hero */
+.services-hero{
+  padding:140px 0 80px;
+  text-align:center;
+}
+.services-title{
+  font-size:3rem;
+  font-weight:800;
+}
+.services-subtitle{
+  color:#ccc;
+}
+
+/* sections */
+.section{
+  padding:80px 0;
+  text-align:center;
+}
+.section-title{
+  font-size:2.2rem;
+  margin-bottom:10px;
+}
+.section-subtext{
+  color:#ccc;
+  margin-bottom:40px;
+}
+
+/* grid fix */
+.grid--2{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+/* cards */
+.card{
+  background:rgba(255,255,255,0.05);
+  padding:30px;
+  border-radius:16px;
+}
+
+/* CTA */
+.cta-section{
+  text-align:center;
+}
+.btn{
+  padding:12px 24px;
+  border-radius:30px;
+  text-decoration:none;
+}
+.btn-primary{
+  background:#fff;
+  color:#000;
+}
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+    padding:60px 0 40px;
+    border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.footer-inner{
+    display:flex;
+    justify-content:space-between;
+    gap:50px;
+    flex-wrap:wrap;
+}
+
+.footer-brand{
+    max-width:350px;
+}
+
+.footer-brand h3{
+    margin:20px 0 10px;
+}
+
+.footer-links{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.footer-links a{
+    color:#d0d0d0;
+    text-decoration:none;
+    transition:0.3s ease;
+}
+
+.footer-links a:hover{
+    color:#fff;
+    transform:translateX(5px);
+}
+
+.footer-copy{
+    width:100%;
+    text-align:center;
+    margin-top:50px;
+    color:#8f8f8f;
+    border-top:1px solid rgba(255,255,255,0.08);
+    padding-top:30px;
+}
+
+
+
+/* responsive */
+@media(max-width:768px){
+  .services-title{font-size:2.2rem;}
+  nav{display:none;}
+}
+
+
+  .form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: rgb(16, 16, 16);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  }
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  .btn-submit {
+    background: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .btn-submit:hover {
+    background: #218838;
+  }
+
+  .preview-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+
+
+</style>
+</head>
+
+<body>
+<div class="grid"></div>
+
+<header id="header">
+    <div class="container header-inner">
+
+        <div class="logo-wrapper">
+            <img src="{% static 'images/CYVEXA.png' %}" alt="logo">
+            <div class="logo-text">CYVEXA</div>
+        </div>
+
+        <nav>
+            <ul>
+            <li><a class="nav-link" href="/">Home</a></li>
+            <li><a class="nav-link" href="/about/">About</a></li>
+            <li><a class="nav-link" href="/services/">Services</a></li>
+            <li><a class="nav-link" href="/works/">Works</a></li>
+            <li><a class="nav-link" href="/contact/">Contact</a></li>
+            <li><a class="nav-link" href="/blog/">Blog</a> </li>
+            <li><a class="nav-link" href="{% url 'event_list' %}">Events</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- 🟡 FORM -->
+<div class="form-container">
+  <h2>✏️ Edit Event</h2>
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-group">
+      <label>Title</label>
+      {{ form.title }}
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      {{ form.description }}
+    </div>
+
+    <div class="form-group">
+      <label>Current Image</label><br>
+      {% if form.instance.image %}
+        <img src="{{ form.instance.image.url }}" class="preview-img">
+      {% endif %}
+      {{ form.image }}
+    </div>
+
+    <div class="form-group">
+      <label>Start Date</label>
+      {{ form.start_date }}
+    </div>
+
+    <div class="form-group">
+      <label>End Date</label>
+      {{ form.end_date }}
+    </div>
+
+    <div class="form-group">
+      <label>Location</label>
+      {{ form.location }}
+    </div>
+
+    <button type="submit" class="btn-submit">Update Event</button>
+  </form>
+</div>
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container footer-inner">
+
+<div class="footer-brand">
+    <img src="{% static 'images/CYVEXA.png' %}  " width="55">
+
+    <h3>CYVEXA</h3>
+    <p>
+        Professional Cybersecurity &
+        Web Development Solutions
+    </p>
+</div>
+
+<div class="footer-links">
+    <a href="/home/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/services/">Services</a>
+    <a href="/works/">Works</a>
+    <a href="/contact/">Contact</a>
+</div>
+
+<div class="footer-links">
+    <a href="#">Cybersecurity</a>
+    <a href="#">Web Development</a>
+    <a href="#">Consulting</a>
+    <a href="#">Ethical Hacking</a>
+    <a href="#">Cloud Security</a>
+</div>
+
+<div class="footer-copy">
+    © 2026 CYVEXA — Secure Technology Solutions
+</div>
+
+</div>
+
+</footer>
+</body>
+</html>

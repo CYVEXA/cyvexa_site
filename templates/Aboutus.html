@@ -1,0 +1,1222 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | CYVEXA - Cybersecurity & Web Development</title>
+    <link rel="icon" type="image/png" href="{% static 'images/CYVEXA.png' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Search Console ownership verification -->
+    <meta name="google-site-verification" content="wV7ZCqJIu1mZjte3yJ7-PbyREoClOnEyqWwV9LP_n24" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JT3L0C97TQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JT3L0C97TQ');
+    </script>
+
+<style>
+/* =========================
+   GLOBAL RESET & BASE
+========================= */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #050505;
+    color: #e5e5e5;
+    overflow-x: hidden;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* =========================
+   BACKGROUND EFFECTS
+========================= */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.06), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(255,255,255,0.04), transparent 30%);
+    z-index: -2;
+    pointer-events: none;
+}
+
+.grid {
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -1;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.1));
+    pointer-events: none;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+h1, h2, h3, h4 {
+    color: #ffffff;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+p {
+    color: #b0b0b0;
+    max-width: 65ch;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.container {
+    width: min(1200px, 90%);
+    margin: auto;
+}
+
+.container-narrow {
+    width: min(900px, 90%);
+    margin: auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    backdrop-filter: blur(16px);
+    background: rgba(0,0,0,0.45);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logo-wrapper img {
+    width: 88px;
+    height: 88px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.25));
+}
+
+.logo-text {
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+}
+
+nav a {
+    color: #fff;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    transition: 0.3s ease;
+    opacity: 0.85;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: -6px;
+    background: #fff;
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    opacity: 1;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* =========================
+   SECTION BASE
+========================= */
+section {
+    padding: 100px 0;
+    position: relative;
+}
+
+.section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #888;
+    margin-bottom: 16px;
+    border-left: 3px solid rgba(255,255,255,0.4);
+    padding-left: 12px;
+}
+
+.section-title {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #fff;
+}
+
+.section-lead {
+    font-size: 1.15rem;
+    color: #ccc;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* =========================
+   HERO
+========================= */
+.about-hero {
+    padding: 160px 0 100px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.about-title {
+    font-size: clamp(2.5rem, 6vw, 4.2rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 16px;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #fff 30%, #aaa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.about-tagline {
+    font-size: 1.15rem;
+    color: #999;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* =========================
+   INTRO
+========================= */
+.about-intro {
+    padding: 90px 0 60px;
+}
+
+.about-intro-text {
+    font-size: 1.05rem;
+    color: #b0b0b0;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.about-intro-text strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* =========================
+   TWO COLUMN LAYOUT
+========================= */
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .two-col {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+/* =========================
+   WHO WE ARE
+========================= */
+.approach-cards {
+    display: grid;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.approach-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 24px 28px;
+    transition: 0.3s ease;
+}
+
+.approach-card:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.12);
+    transform: translateY(-3px);
+}
+
+.approach-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.approach-card p {
+    font-size: 0.95rem;
+    color: #999;
+    line-height: 1.5;
+}
+
+/* =========================
+   OUR STORY (TIMELINE)
+========================= */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+    border-left: 2px solid rgba(255,255,255,0.08);
+    margin-top: 30px;
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 32px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #050505;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.2);
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-item p {
+    color: #b0b0b0;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* =========================
+   VALUES GRID
+========================= */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.value-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 32px;
+    transition: 0.35s ease;
+}
+
+.value-card:hover {
+    background: rgba(255,255,255,0.05);
+    transform: translateY(-5px);
+    border-color: rgba(255,255,255,0.12);
+}
+
+.value-card h4 {
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.value-card p {
+    font-size: 0.95rem;
+    color: #999;
+    line-height: 1.6;
+}
+
+/* =========================
+   MISSION / VISION
+========================= */
+.mission-vision-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.mv-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.mv-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.4), transparent);
+}
+
+.mv-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.mv-card p {
+    font-size: 1.05rem;
+    color: #ccc;
+    font-weight: 500;
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .mission-vision-wrap {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================
+   FOUNDER MESSAGE
+========================= */
+.founder-block {
+    background: rgba(255,255,255,0.02);
+    border-left: 4px solid rgba(255,255,255,0.25);
+    border-radius: 0 16px 16px 0;
+    padding: 48px 50px;
+    margin-top: 30px;
+    position: relative;
+}
+
+.founder-block blockquote {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: #ddd;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.founder-block blockquote::before {
+    content: '"';
+    font-size: 4rem;
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    color: rgba(255,255,255,0.08);
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+.founder-name {
+    font-weight: 700;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.founder-role {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 4px;
+}
+
+/* =========================
+   EXPERTISE
+========================= */
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.expertise-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 36px 32px;
+    transition: 0.35s ease;
+    position: relative;
+}
+
+.expertise-card:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.12);
+    transform: translateY(-4px);
+}
+
+.expertise-num {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: rgba(255,255,255,0.08);
+    line-height: 1;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.expertise-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.expertise-card p {
+    font-size: 0.95rem;
+    color: #999;
+    line-height: 1.6;
+}
+
+/* =========================
+   COMMITMENT
+========================= */
+.commitment-list {
+    list-style: none;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 40px;
+}
+
+.commitment-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 1rem;
+    color: #ccc;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.commitment-list li::before {
+    content: '✓';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    color: #fff;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+@media (max-width: 600px) {
+    .commitment-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================
+   LOOKING AHEAD
+========================= */
+.looking-ahead-box {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 48px;
+    margin-top: 30px;
+}
+
+.looking-ahead-box p {
+    font-size: 1.05rem;
+    color: #b0b0b0;
+    margin-bottom: 16px;
+}
+
+.looking-ahead-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* =========================
+   CTA
+========================= */
+.cta-section {
+    text-align: center;
+    padding: 100px 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.cta-section h2 {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    margin-bottom: 32px;
+    color: #fff;
+    font-weight: 700;
+}
+
+/* Buttons */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    padding: 16px 36px;
+    border-radius: 60px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.4s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: #fff;
+    color: #000;
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(255,255,255,0.18);
+}
+
+.btn-outline {
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: #fff;
+    color: #000;
+    transform: translateY(-4px);
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+    padding: 70px 0 40px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.footer-brand {
+    max-width: 320px;
+}
+
+.footer-brand img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 14px;
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.2));
+}
+
+.footer-brand h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.footer-brand p {
+    font-size: 0.95rem;
+    color: #888;
+    line-height: 1.6;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.footer-col strong {
+    color: #fff;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+}
+
+.footer-col a {
+    color: #a0a0a0;
+    text-decoration: none;
+    transition: 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.footer-col a:hover {
+    color: #fff;
+    transform: translateX(4px);
+}
+
+.footer-copy {
+    width: 100%;
+    text-align: center;
+    margin-top: 60px;
+    color: #666;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 30px;
+    font-size: 0.9rem;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 980px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        position: fixed;
+        top: 80px;
+        right: -300px;
+        width: 280px;
+        height: calc(100vh - 80px);
+        background: #0a0a0a;
+        border-left: 1px solid rgba(255,255,255,0.08);
+        box-shadow: -10px 0 40px rgba(0,0,0,0.6);
+        transition: right 0.35s ease;
+        z-index: 998;
+        padding: 40px 0;
+    }
+
+    nav.active {
+        right: 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 26px;
+    }
+
+    section {
+        padding: 70px 0;
+    }
+
+    .about-hero {
+        padding: 140px 0 80px;
+    }
+
+    .founder-block {
+        padding: 36px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-title {
+        font-size: 2.4rem;
+    }
+
+    .section-title {
+        font-size: 1.7rem;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .two-col {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .mission-vision-wrap {
+        grid-template-columns: 1fr;
+    }
+
+    .commitment-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Cyber dots container */
+.cyber-dots {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+</style>
+</head>
+
+<body>
+    <div class="grid"></div>
+
+    <header id="header">
+        <div class="container header-inner">
+            <div class="logo-wrapper">
+                <img src="{% static 'images/cyvexa_logo.png' %}" alt="CYVEXA Logo">
+                <div class="logo-text">CYVEXA</div>
+            </div>
+
+            <nav id="navMenu">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/services/">Services</a></li>
+                    <li><a href="/works/">Works</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="{% url 'event_list' %}">Events</a></li>
+                </ul>
+            </nav>
+
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="about-hero">
+            <div class="container">
+                <h1 class="about-title">About CYVEXA</h1>
+                <p class="about-tagline">Built on Trust. Driven by Security. Powered by Innovation.</p>
+            </div>
+        </section>
+
+        <!-- INTRO 
+        <section class="about-intro">
+            <div class="container-narrow">
+                <span class="section-label">Who we are</span>
+                <p class="about-intro-text">
+                    At CYVEXA, we believe technology should help businesses grow with confidence — not create new risks. Today's organizations depend on web applications, cloud platforms, and digital infrastructure to serve customers and drive innovation. But as technology evolves, so do cyber threats.
+                </p>
+                <p class="about-intro-text">
+                    <strong>We believe they should never have to compromise.</strong> That's why CYVEXA was founded — to deliver security-first technology solutions that are reliable, scalable, and built for the future. From cybersecurity assessments and secure application development to modern web solutions, we help organizations protect their digital assets while accelerating business growth.
+                </p>
+                <p class="about-intro-text">
+                    From startups to enterprises, CYVEXA builds secure, reliable, and future-ready digital solutions you can trust.
+                </p>
+            </div>
+        </section>-->
+
+        <!-- WHO WE ARE -->
+        <section id="who-we-are" style="border-top:1px solid rgba(255,255,255,0.06);">
+            <div class="container two-col">
+                <div>
+                    <span class="section-label">Identity</span>
+                    <h2 class="section-title">Who We Are</h2>
+                    <p class="section-lead">
+                        CYVEXA is a security-first technology company dedicated to building digital solutions that businesses can trust.
+                    </p>
+                    <p style="color:#b0b0b0; margin-bottom:18px;">
+                        We combine cybersecurity expertise with modern engineering to create secure, scalable, and future-ready applications that empower organizations to grow with confidence. Whether we're developing a web platform, securing critical infrastructure, or strengthening an organization's cyber resilience, our focus remains the same — delivering technology that performs, protects, and lasts.
+                    </p>
+                    <p style="color:#b0b0b0;">
+                        We work with enterprises, institutions, and startups to build secure digital solutions that empower innovation, accelerate growth, and inspire confidence.
+                    </p>
+                </div>
+                <div>
+                    <div class="approach-cards">
+                        <div class="approach-card">
+                            <h4>Build Right.</h4>
+                            <p>Engineering discipline from day one, with architecture that scales cleanly.</p>
+                        </div>
+                        <div class="approach-card">
+                            <h4>Secured Always.</h4>
+                            <p>Security is not a feature — it is the foundation of every solution we ship.</p>
+                        </div>
+                        <div class="approach-card">
+                            <h4>Supported for Life.</h4>
+                            <p>Long-term partnerships over transactions. We grow as you grow.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OUR STORY -->
+        <section id="our-story" style="border-top:1px solid rgba(255,255,255,0.06);">
+            <div class="container two-col">
+                <div>
+                    <span class="section-label">History</span>
+                    <h2 class="section-title">Our Story</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <p>CYVEXA was founded with a simple idea: <strong style="color:#fff;">security should be built into technology from the very beginning</strong>, not added as an afterthought.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <p>As businesses embraced digital transformation, we saw too many organizations forced to choose between speed and security. We believed they deserved both.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <p>That belief became CYVEXA — a security-first technology company committed to building reliable, scalable, and secure digital solutions.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <p>Today, we partner with institutions, startups, and enterprises to help them innovate with confidence, knowing their technology is designed to perform, protect, and grow.</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="align-self:center;">
+                    <p style="color:#b0b0b0; font-size:1.05rem; line-height:1.8;">
+                        From small projects to large platforms, our goal has always been the same — to help organizations move forward safely in the digital age. Every line of code we write and every system we secure carries that original purpose.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHAT DRIVES US -->
+        <section id="what-drives-us" style="border-top:1px solid rgba(255,255,255,0.06);">
+            <div class="container">
+                <span class="section-label">Culture</span>
+                <h2 class="section-title">What Drives Us</h2>
+                <p class="section-lead" style="max-width: 70ch;">
+                    We are driven by responsibility. Every decision begins with one question: <em style="color:#fff;">How can we create greater trust?</em>
+                </p>
+                <p style="color:#b0b0b0; max-width: 70ch; margin-bottom: 10px;">
+                    We understand that the technology we build and protect powers businesses, serves customers, and safeguards critical data. That's why we approach every project with a commitment to excellence, security, and lasting partnerships.
+                </p>
+
+                <div class="values-grid">
+                    <div class="value-card">
+                        <h4>Security First</h4>
+                        <p>Protection is built into every solution by design, not bolted on later.</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>Engineering Excellence</h4>
+                        <p>Delivering reliable, scalable, and high-quality technology that stands the test of time.</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>Trusted Partnerships</h4>
+                        <p>Working closely with clients to achieve lasting success, not just shipping code.</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>Continuous Innovation</h4>
+                        <p>Evolving with technology to keep businesses future-ready and competitive.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MISSION & VISION -->
+        <section id="mission-vision" style="border-top:1px solid rgba(255,255,255,0.06);">
+            <div class="container">
+                <span class="section-label">Direction</span>
+                <h2 class="section-title">Mission & Vision</h2>
+                <div class="mission-vision-wrap">
+                    <div class="mv-card">
+                        <h3>Our Mission</h3>
+                        <p>To build a safer digital future by creating technology that's secure by design, reliable by default, and built to help businesses thrive.</p>
+                    </div>
+                    <div class="mv-card">
+                        <h3>Our Vision</h3>
+                        <p>To become the most trusted security-first technology company, empowering businesses worldwide to innovate, grow, and thrive in a secure digital future.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOUNDER MESSAGE -->
+        <section id="founder-message" style="border-top:1px solid rgba(255,255,255,0.06);">
+            <div class="container-narrow">
+                <span class="section-label">Leadership</span>
+                <h2 class="section-title">Founder's Message</h2>
+                <div class="founder-block">
+                    <blockquote>
+                        CYVEXA was built to help organizations innovate without compromising security. We believe strong technology should be both powerful and trustworthy — and our role is to make that possible for every client we serve.
+                    </blockquote>
+                    <div class="founder-name">Founder, CYVEXA</div>
+                    <div class="founder-role">Cybersecurity & Technology Leadership</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERTISE -->
+        <section id="expertise" style="border-top:1px solid rgba(255,255,255,0.06);">
+            <div class="container">
+                <span class="section-label">Capabilities</span>
+                <h2 class="section-title">Our Expertise</h2>
+                <p class="section-lead" style="max-width: 70ch;">
+                    From cybersecurity to modern software engineering, CYVEXA delivers end-to-end technology solutions designed to protect, optimize, and accelerate your business.
+                </p>
+
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <span class="expertise-num">01</span>
+                        <h4>Cybersecurity VAPT & Security Audits</h4>
+                        <p>Comprehensive vulnerability assessment and penetration testing to identify and remediate risks before attackers do.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <span class="expertise-num">02</span>
+                        <h4>SecureWeb & Application Development</h4>
+                        <p>Modern, responsive, and high-performance web platforms built with scalable architecture and clean code.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <span class="expertise-num">03</span>
+                        <h4>Secure Based Engineering</h4>
+                        <p>SDL-aligned development practices that embed security into every phase of the software lifecycle.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <span class="expertise-num">04</span>
+                        <h4>Technology Consulting</h4>
+                        <p>Strategic guidance for digital transformation, cloud migration, and security program maturity.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMITMENT -->
+        <section id="client-commitment" style="border-top:1px solid rgba(255,255,255,0.06);">
+            <div class="container two-col">
+                <div>
+                    <span class="section-label">Partnership</span>
+                    <h2 class="section-title">Our Commitment to Clients</h2>
+                    <p class="section-lead">
+                        We don't see projects as transactions — we see them as partnerships.
+                    </p>
+                    <p style="color:#b0b0b0;">
+                        When organizations work with CYVEXA, they gain a team that is invested in their long-term success. We prioritize transparency, responsiveness, and real outcomes over vanity metrics.
+                    </p>
+                </div>
+                <div>
+                    <ul class="commitment-list">
+                        <li>Reliable and responsive support</li>
+                        <li>Transparent in communication</li>
+                        <li>Focused on real outcomes</li>
+                        <li>Dedicated to quality and security</li>
+                        <li>Invested in long-term success</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOOKING AHEAD -->
+        <section id="looking-ahead" style="border-top:1px solid rgba(255,255,255,0.06);">
+            <div class="container">
+                <span class="section-label">Future</span>
+                <h2 class="section-title">Looking Ahead</h2>
+                <div class="looking-ahead-box">
+                    <p>
+                        Technology never stands still — and neither do we. As cyber threats evolve and businesses embrace new opportunities, CYVEXA remains committed to staying ahead through continuous innovation, research, and security-first engineering.
+                    </p>
+                    <p>
+                        Our journey is just beginning, and we are committed to building a safer digital future for organizations worldwide. We are expanding our research capabilities, deepening our threat intelligence, and building the next generation of secure platforms.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Secure Your Digital Future?</h2>
+                <div class="hero-buttons">
+                    <a class="btn btn-primary" href="https://wa.me/918903051053?text=Hi%20CYVEXA,%20I%20am%20interested%20in%20your%20services">Get in Touch</a>
+                    <a class="btn btn-outline" href="/services/">Explore Services</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <img src="{% static 'images/cyvexa_logo.png' %}" alt="CYVEXA Logo">
+                <h3>CYVEXA</h3>
+                <p>Cybersecurity and secure software solutions for businesses and institutions.<br>Build Secure. Operate Confidently.</p>
+            </div>
+
+            <div class="footer-col">
+                <strong>Company</strong>
+                <a href="/about/">About</a>
+                <a href="/works/">Work</a>
+                <a href="/#products">Products</a>
+                <a href="/#industries">Industries</a>
+            </div>
+
+            <div class="footer-col">
+                <strong>Services</strong>
+                <a href="/services/#vapt">Web VAPT</a>
+                <a href="/services/#web-dev">Secure Website Development</a>
+                <a href="/services/#amc">Website Security &amp; AMC</a>
+                <a href="/services/">All Services</a>
+            </div>
+
+            <div class="footer-col">
+                <strong>Resources</strong>
+                <a href="/blog/">Blog</a>
+                <a href="{% url 'event_list' %}">Events</a>
+                <a href="/contact/">Contact</a>
+                <a href="/contact/">FAQs</a>
+            </div>
+
+            <div class="footer-copy">
+                © 2026 CYVEXA. All rights reserved. &nbsp;|&nbsp;
+                <a href="/about/" style="color:#888; text-decoration:none;">Privacy Policy</a> ·
+                <a href="/about/" style="color:#888; text-decoration:none;">Terms</a> ·
+                <a href="/contact/" style="color:#888; text-decoration:none;">Responsible Disclosure</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById("navMenu").classList.toggle("active");
+        }
+
+        // Navbar scroll behavior
+        let lastScrollTop = 0;
+        const header = document.getElementById('header');
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                header.style.transform = 'translateY(-100%)';
+                header.style.opacity = '0';
+            } else {
+                header.style.transform = 'translateY(0)';
+                header.style.opacity = '1';
+            }
+
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+
+        // Cybersecurity background animation
+        const cyberDots = document.querySelector('.cyber-dots');
+        const binarySymbols = ['0', '1'];
+        const MAX_ELEMENTS = 45;
+        let elementCount = 0;
+
+        function createFloatingElement() {
+            const element = document.createElement('div');
+            element.style.position = 'absolute';
+            element.style.fontSize = Math.random() * 20 + 16 + 'px';
+            element.style.opacity = Math.random() * 0.4 + 0.2;
+            element.style.pointerEvents = 'none';
+            element.style.left = Math.random() * 100 + '%';
+            element.style.top = Math.random() * 100 + '%';
+            element.textContent = binarySymbols[Math.floor(Math.random() * binarySymbols.length)];
+            element.style.color = 'rgba(0, 102, 255, 0.5)';
+            element.style.fontWeight = 'bold';
+            element.style.fontFamily = 'monospace';
+            element.style.animation = `float ${Math.random() * 12 + 18}s linear infinite`;
+
+            if (elementCount >= MAX_ELEMENTS && cyberDots.firstChild) {
+                cyberDots.removeChild(cyberDots.firstChild);
+            } else {
+                elementCount++;
+            }
+
+            cyberDots.appendChild(element);
+        }
+
+        for (let i = 0; i < 35; i++) {
+            setTimeout(() => createFloatingElement(), i * 100);
+        }
+
+        setInterval(() => {
+            createFloatingElement();
+        }, 3000);
+
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>
